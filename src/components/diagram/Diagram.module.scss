@@ -1,0 +1,59 @@
+@import "../../fonts/fonts.scss";
+
+.container {
+  align-items: center;
+  margin: 20px auto 40px;
+  background-color: #f5f6fb;;
+}
+
+.chart {
+  display: inline-block;
+  width: 320px;
+  height: 200px;
+}
+
+.answers {
+  display: flex;
+  justify-content: center;
+}
+
+.textAnswers {
+  position: relative;
+  font-family: "Montserrat-500";
+  font-style: normal;
+  font-size: 10px;
+  line-height: 12px;
+  letter-spacing: 0.02em;
+  padding: 0 20px;
+}
+
+.textAnswers:first-of-type::after {
+  content: "";
+  position: absolute;
+  margin: auto 20px;
+  width: 2px;
+  height: 20px;
+  opacity: 0.15;
+  background-color: #00122f;
+}
+
+.textAnswersNumber {
+  font-weight: bold;
+}
+
+@media screen and (min-width: 768px) {
+  .textAnswers {
+    font-size: 16px;
+    line-height: 20px;
+    padding: 0 40px;
+  }
+
+  .chart {
+    width: 600px;
+    height: 340px;
+  }
+
+  .textAnswers:first-of-type::after {
+    margin: auto 40px;
+  }
+}

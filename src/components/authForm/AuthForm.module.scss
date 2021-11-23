@@ -1,0 +1,147 @@
+* {
+  box-sizing: border-box;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: #fff;
+  position: relative;
+  padding: 30px 20px;
+  box-shadow: 0px 4px 15px rgba(2, 23, 42, 0.1);
+}
+
+.desc {
+  margin: 0;
+  margin-bottom: 20px;
+  font-family: "Montserrat-500";
+  font-size: 10px;
+  line-height: 12px;
+  color: #000000;
+}
+
+.googleButton {
+  width: 160px;
+  height: 50px;
+  background: #fafafa;
+  border: none;
+  box-shadow: 0px 2px 5px rgba(2, 23, 42, 0.16);
+  font-size: 14px;
+  line-height: 17px;
+  font-family: "Montserrat-700";
+  margin: 0 auto;
+  margin-bottom: 30px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 37px;
+  padding-right: 37px;
+  cursor: pointer;
+  transition: box-shadow 0.2s linear;
+}
+
+.googleButton:hover,
+.googleButton:focus {
+  box-shadow: 0px 10px 15px rgba(1, 17, 32, 0.16);
+  transition: box-shadow 0.2s linear;
+}
+
+.googleButton::before {
+  content: "";
+  display: inline-block;
+  height: 18px;
+  width: 18px;
+  background-image: url("../../img/google_g_logo.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center center;
+}
+
+.form {
+  width: 100%;
+}
+
+.input {
+  min-width: 240px;
+
+  width: 100%;
+  height: 56px;
+  padding-left: 25px;
+  border: 1px solid #ced2d1;
+  margin-bottom: 20px;
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.button {
+  width: 109.03px;
+  height: 60px;
+  font-family: "Montserrat-700";
+  font-size: 10px;
+  line-height: 12px;
+  text-transform: uppercase;
+  background: #fff;
+  border: 1px solid #ced2d1;
+  cursor: pointer;
+  transition: all 0.15s linear;
+}
+
+.button:not(:last-child) {
+  margin-right: 20px;
+}
+
+.button:hover,
+.button:focus {
+  color: #fff;
+  background: #ff6b09;
+  border: 1px solid #ced2d1;
+  transition: all 0.2s linear;
+}
+
+@media (min-width: 768px) {
+  .container {
+    padding: 62px 57px 42px;
+  }
+
+  .desc {
+    font-size: 14px;
+    line-height: 17px;
+  }
+
+  .googleButton {
+    margin: 0;
+    margin-bottom: 30px;
+  }
+
+  .input {
+    font-size: 14px;
+    line-height: 17px;
+  }
+
+  .button {
+    width: 200px;
+    height: 60px;
+    font-size: 12px;
+    line-height: 15px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .container {
+    padding: 62px 40px 42px;
+  }
+
+  .desc {
+    font-size: 14px;
+    line-height: 17px;
+  }
+
+  .googleButton {
+    margin-bottom: 40px;
+  }
+}

@@ -1,0 +1,22 @@
+.container {
+  width: 129px;
+  height: 28px;
+  transition: 0.25s;
+}
+
+.container:hover,
+.container:focus {
+  cursor: pointer;
+  transform: rotateY(15deg);
+  box-shadow: grey -5px 1px 5px 0px;
+}
+
+.appear {
+  transform: scale(1.5);
+  opacity: 0;
+}
+.appearActive {
+  transform: scale(1);
+  opacity: 1;
+  transition: all 1000ms linear;
+}

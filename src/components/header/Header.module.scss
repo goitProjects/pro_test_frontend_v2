@@ -1,0 +1,139 @@
+.container {
+  box-sizing: border-box;
+  margin: 0 auto;
+  min-width: 320px;
+  padding: 20px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.wrapper {
+  border-bottom: 1px solid #e2e3e5;
+}
+.isHidden {
+  display: none;
+}
+.burger {
+  position: relative;
+  cursor: pointer;
+}
+
+.burgerOn {
+  width: 15px;
+  height: 10px;
+  transition: transform 0.4s ease-in-out;
+}
+.burgerOn:hover {
+  transform: scale(1.2);
+}
+
+.burger::before {
+  display: block;
+  content: "";
+  width: 1px;
+  height: 73px;
+  background-color: #e2e3e5;
+  position: absolute;
+  top: -26px;
+  left: -20px;
+}
+.nav {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.logoutIcon {
+  display: none;
+  position: relative;
+  cursor: pointer;
+}
+.logout1 {
+  fill: black;
+  width: 12px;
+  height: 16px;
+  transition: all 0.4s ease-in;
+}
+.logout2 {
+  fill: black;
+  width: 9px;
+  height: 6px;
+  position: relative;
+  left: -5px;
+  top: -5px;
+  transition: all 0.4s ease-in;
+}
+.logoutIcon::before {
+  display: block;
+  content: "";
+  width: 1px;
+  height: 73px;
+  background-color: #e2e3e5;
+  position: absolute;
+  top: -26px;
+  left: -20px;
+}
+.logoutIcon:hover .logout1 {
+  transform: scale(1.2);
+}
+.logoutIcon:hover .logout2 {
+  transform: scale(1.2);
+  left: 0px;
+}
+.arrow {
+  position: relative;
+  left: 1px;
+}
+// TRANSITION
+.appear {
+  transform: translateY(-200%);
+  opacity: 0;
+}
+.appearActive {
+  transform: translateY(0);
+  opacity: 1;
+  transition: all 250ms linear;
+}
+.enter {
+  transform: translateY(-200%);
+  opacity: 0;
+}
+.enterActive {
+  transform: translateY(0);
+  opacity: 1;
+  transition: all 250ms linear;
+}
+.exit {
+  transform: translateY(0);
+  opacity: 1;
+}
+.exitActive {
+  transform: translateY(-200%);
+  opacity: 0;
+  transition: all 250ms linear;
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    min-width: 768px;
+  }
+  .isHidden {
+    display: block;
+  }
+
+  .burger {
+    display: none;
+  }
+  .logoutIcon {
+    display: block;
+    border: none;
+    outline: none;
+    background-color: transparent;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .container {
+    max-width: 1280px;
+  }
+}

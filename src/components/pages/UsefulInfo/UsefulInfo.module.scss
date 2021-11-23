@@ -1,0 +1,103 @@
+.usefulInfo {
+  min-height: calc(100vh - 129px);
+  box-sizing: border-box;
+  background-image: url("../../../img/background_usefulInfo_mob.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: -83px -52px;
+  background-position: -354px 0px;
+
+  @media screen and (min-width: 660px) {
+    background-position: -240px 0px;
+  }
+
+  @media screen and (min-width: 768px) {
+    background-image: url("../../../img/background_usefulInfo_tab.png");
+    background-position: 0px -73px;
+  }
+  @media screen and (min-width: 1280px) {
+    background-image: url("../../../img/background_usefulInfo_desk.png");
+    background-position: 0px 0px;
+  }
+}
+
+.container {
+  padding-bottom: 88px;
+  padding-top: 37px;
+  padding-left: 6.25%;
+
+  @media screen and (min-width: 768px) {
+    padding-left: 15.1%;
+    padding-top: 116px;
+
+    padding-bottom: 394px;
+  }
+  @media screen and (min-width: 1280px) {
+    padding-left: 14.8%;
+    padding-top: 96px;
+
+    padding-bottom: 240px;
+  }
+}
+
+.usefulInfo-sources {
+  margin-bottom: 27px;
+  width: 150px;
+  hr {
+    width: 150px;
+  }
+  @media screen and (min-width: 768px) {
+    width: 389px;
+    margin-bottom: 30px;
+    hr {
+      width: 322px;
+    }
+  }
+}
+
+.sections-name {
+  margin-bottom: 11px;
+  font-family: "Montserrat-700";
+  font-size: 18px;
+  letter-spacing: 0.02em;
+  @media screen and (min-width: 768px) {
+    font-size: 22px;
+    line-height: 30px;
+    margin-bottom: 19px;
+  }
+}
+
+.sources-list {
+  margin-top: 10px;
+  list-style-type: decimal;
+  list-style-position: inside;
+  :nth-child(1) {
+    a {
+      margin-left: 4px;
+    }
+  }
+  @media screen and (min-width: 768px) {
+    margin-left: 60px;
+    margin-top: 24px;
+  }
+}
+
+.sources-item {
+  font-family: "Montserrat-500";
+  font-size: 10px;
+  line-height: 16px;
+  letter-spacing: 0.02em;
+  a {
+    margin-left: 2px;
+    text-decoration: underline;
+    color: black;
+  }
+  ::marker {
+    text-combine-upright: all;
+  }
+
+  @media screen and (min-width: 768px) {
+    font-size: 14px;
+    line-height: 22px;
+  }
+}
