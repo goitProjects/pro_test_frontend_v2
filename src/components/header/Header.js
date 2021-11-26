@@ -7,6 +7,7 @@ import UserInfo from "../userInfo/UserInfo";
 import sprite from "../../sprites/sprite.svg";
 import styles from "./Header.module.scss";
 import { logOut } from "../../redux/operations/authOperations";
+import { getIsAuth, getUserData } from "../../redux/selectors/authSelector";
 
 class Header extends Component {
   state = {
@@ -45,7 +46,7 @@ class Header extends Component {
                     <Navigation isAuthorized={isAuthorized} />
                   </div>
                 </CSSTransition>
-                {isAuthorized && <UserInfo email={email} />}
+                {email && <UserInfo email={email} />}
                 {isAuthorized && (
                   <button
                     className={styles.logoutIcon}
@@ -94,8 +95,8 @@ class Header extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  isAuthorized: state.auth.token,
-  email: state.auth.user.userData.email,
+  isAuthorized: getIsAuth(state),
+  email: getUserData(state).email,
 });
 
 const mapDispatchToProps = { logOut };

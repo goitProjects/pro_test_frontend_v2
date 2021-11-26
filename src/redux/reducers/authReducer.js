@@ -18,29 +18,20 @@ import {
 } from "../actions/authAction";
 
 const initialUserState = {
-  accessToken: null,
-  refreshToken: null,
-  sid: null,
+  // accessToken: null,
+  // refreshToken: null,
+  // sid: null,
   userData: {
     email: null,
     id: null,
   },
 };
 
-const user = createReducer(
-  { ...initialUserState },
-  {
-    [loginSuccess]: (_, { payload }) => payload,
-    [getUserSuccess]: (_, { payload }) => payload,
-    [refreshSuccess]: (state, { payload }) => ({
-      ...state,
-      accessToken: payload.newAccessToken,
-      refreshToken: payload.newRefreshToken,
-      sid: payload.newSid,
-    }),
-    [logOutSuccess]: (_, { payload }) => ({ ...initialUserState }),
-  }
-);
+const user = createReducer(initialUserState.userData, {
+  [loginSuccess]: (_, { payload }) => payload.userData,
+  [getUserSuccess]: (state, { payload: { email } }) => ({ ...state, email }),
+  [logOutSuccess]: () => initialUserState.userData,
+});
 
 const loading = createReducer(false, {
   [registerRequest]: () => true,
@@ -62,30 +53,43 @@ const loading = createReducer(false, {
 
 const token = createReducer(null, {
   [loginSuccess]: (_, { payload }) => payload.accessToken,
-  [getUserSuccess]: (_, { payload }) => payload.accessToken,
   [refreshSuccess]: (_, { payload }) => payload.newAccessToken,
-  [logOutSuccess]: (_, { payload }) => null,
+  [logOutSuccess]: () => null,
+});
+
+const refreshToken = createReducer(null, {
+  [loginSuccess]: (_, { payload }) => payload.refreshToken,
+  [refreshSuccess]: (_, { payload }) => payload.newRefreshToken,
+  [logOutSuccess]: () => null,
+});
+
+const sid = createReducer(null, {
+  [loginSuccess]: (_, { payload }) => payload.sid,
+  [refreshSuccess]: (_, { payload }) => payload.newSid,
+  [logOutSuccess]: () => null,
 });
 
 const error = createReducer(null, {
   [registerError]: (_, { payload }) => payload,
   [loginError]: (_, { payload }) => payload,
   [getUserError]: (_, { payload }) => payload,
-  [registerRequest]: (_, { payload }) => null,
-  [registerSuccess]: (_, { payload }) => null,
-  [loginRequest]: (_, { payload }) => null,
-  [loginSuccess]: (_, { payload }) => null,
-  [getUserRequest]: (_, { payload }) => null,
-  [getUserSuccess]: (_, { payload }) => null,
-  [refreshRequest]: (_, { payload }) => null,
-  [refreshSuccess]: (_, { payload }) => null,
-  [logOutRequest]: (_, { payload }) => null,
-  [logOutSuccess]: (_, { payload }) => null,
+  [registerRequest]: () => null,
+  [registerSuccess]: () => null,
+  [loginRequest]: () => null,
+  [loginSuccess]: () => null,
+  [getUserRequest]: () => null,
+  [getUserSuccess]: () => null,
+  [refreshRequest]: () => null,
+  [refreshSuccess]: () => null,
+  [logOutRequest]: () => null,
+  [logOutSuccess]: () => null,
 });
 
 const authReducer = combineReducers({
   user,
   token,
+  refreshToken,
+  sid,
   error,
   loading,
 });

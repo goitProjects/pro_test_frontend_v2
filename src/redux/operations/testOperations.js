@@ -15,6 +15,7 @@ const test = (type) => async (dispatch) => {
     const testData = await getTestData(type);
     dispatch(_Success({ data: testData.data, type }));
   } catch (error) {
+    console.dir("error", error);
     dispatch(_Error(error));
   }
 };
@@ -25,6 +26,7 @@ const answersListOperation = (answers) => async (dispatch) => {
   try {
     dispatch(addAnswersListSuccess(answers));
   } catch (error) {
+    console.dir("error", error);
     dispatch(addAnswersListError(error));
   }
 };

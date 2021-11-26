@@ -18,7 +18,7 @@ class Results extends Component {
   componentDidMount() {
     const { testAnswers, typeOfTests, resultsOperation } = this.props;
 
-    if (testAnswers && testAnswers.answers.length === 12) {
+    if (testAnswers && testAnswers.length === 12) {
       resultsOperation(testAnswers, typeOfTests);
     }
   }
@@ -34,7 +34,7 @@ class Results extends Component {
   render() {
     const { testAnswers, results } = this.props;
 
-    return testAnswers === null || testAnswers.answers.length < 12 ? (
+    return testAnswers === null || testAnswers.length < 12 ? (
       <Redirect to={routes.mainPage} />
     ) : results.answers ? (
       <Loader />

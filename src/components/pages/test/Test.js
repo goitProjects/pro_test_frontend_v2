@@ -13,10 +13,6 @@ class Test extends Component {
     questionNumber: 0,
   };
 
-  componentDidMount() {
-    localStorage.setItem("answers", JSON.stringify([]));
-  }
-
   handleFinishButtonClick = () => {
     this.props.history.push("/results");
   };
@@ -36,6 +32,7 @@ class Test extends Component {
   render() {
     const { testData } = this.props;
     const { questionNumber: idx } = this.state;
+    const curTest = testData[idx];
 
     return (
       <div className={styles.container}>
@@ -58,12 +55,10 @@ class Test extends Component {
             {!!this.props.testType ? "Finish test" : "Select question type"}
           </button>
         </section>
-        {testData[idx] && (
+        {curTest && (
           <Questions
-            question={testData[idx].question}
-            questionId={testData[idx].questionId}
-            answers={testData[idx].answers}
             currentNumber={idx + 1}
+            {...curTest}
           />
         )}
         <section className={styles["button-section"]}>

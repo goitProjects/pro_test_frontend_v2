@@ -97,11 +97,10 @@ const postTheoryResults = async (results) => {
 
 const getUser = async (userToken) => {
   try {
-    await token.set(userToken);
+    token.set(userToken);
     const user = await axios.get("/user");
-    return await user.data;
+    return user.data;
   } catch (error) {
-    console.log("error", { error });
     throw error;
   }
 };
@@ -116,7 +115,7 @@ const getTestData = async (type) => {
     const data = await axios.get("/qa-test/theory");
     return data;
   } catch (error) {
-    console.error(error);
+    throw error;
   }
 };
 

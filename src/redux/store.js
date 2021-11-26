@@ -19,12 +19,19 @@ import { testReducer } from "./reducers/testReducer";
 const authPersistConfig = {
   key: "auth",
   storage,
+  whitelist: ["token", "sid", "refreshToken"],
+};
+
+const answersPersistConfig = {
+  key: "qa",
+  storage,
+  whitelist: ["answers", "test"],
 };
 
 const rootReducer = combineReducers({
   auth: persistReducer(authPersistConfig, authReducer),
   resultsOfTest: resultsReducer,
-  tests: testReducer,
+  tests: persistReducer(answersPersistConfig, testReducer),
 });
 
 const store = configureStore({

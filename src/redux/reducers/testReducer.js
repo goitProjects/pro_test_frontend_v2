@@ -6,6 +6,7 @@ import {
   addAnswersListRequest,
   addAnswersListSuccess,
   addAnswersListError,
+  addAnswer,
 } from "../actions/testAction";
 
 const test = createReducer(
@@ -33,8 +34,9 @@ const error = createReducer(null, {
   [addAnswersListError]: (_, { payload }) => payload,
 });
 
-const answers = createReducer(null, {
+const answers = createReducer([], {
   [addAnswersListSuccess]: (_, { payload }) => payload,
+  [addAnswer]: (state, { payload }) => [...state, payload],
 });
 
 const testReducer = combineReducers({

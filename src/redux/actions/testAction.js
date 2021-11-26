@@ -8,6 +8,8 @@ const addAnswersListRequest = createAction("results/addAnswersListRequest");
 const addAnswersListSuccess = createAction("results/addAnswersListSuccess");
 const addAnswersListError = createAction("results/addAnswersListError");
 
+const addAnswer = createAction("results/addAnswer");
+
 export {
   _Error,
   _Success,
@@ -15,4 +17,5 @@ export {
   addAnswersListRequest,
   addAnswersListSuccess,
   addAnswersListError,
+  addAnswer,
 };
