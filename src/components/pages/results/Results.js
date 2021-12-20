@@ -21,19 +21,20 @@ class Results extends Component {
   state = { results: null };
 
   componentDidMount() {
-    const { testAnswers, typeOfTests, resultsOperation } = this.props;
+    const { testAnswers, typeOfTests, results, resultsOperation } = this.props;
 
     if (testAnswers && testAnswers.length === 12) {
       resultsOperation(testAnswers, typeOfTests);
     }
+    results.answers === null && this.props.history.push("/");
   }
 
   componentDidUpdate(_, prevProps) {
-    const { results, resetTest } = this.props;
+    const { results, testAnswers, typeOfTests, resetTest } = this.props;
 
     if (results !== prevProps.results) {
       this.setState({ results });
-      resetTest();
+      testAnswers.length && typeOfTests && resetTest();
     }
   }
 

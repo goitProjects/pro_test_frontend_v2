@@ -15,6 +15,7 @@ const Questions = ({ question, questionId, currentNumber, answers }) => {
 
   useEffect(() => {
     checkedAnswer && dispatch(addAnswer({ questionId, answer: checkedAnswer }));
+    // eslint-disable-next-line
   }, [checkedAnswer]);
 
   useEffect(() => {
@@ -23,6 +24,7 @@ const Questions = ({ question, questionId, currentNumber, answers }) => {
     );
     console.log("savedAnswer :>> ", savedAnswer);
     setCheckedAnswer(savedAnswer ? savedAnswer.answer : null);
+    // eslint-disable-next-line
   }, [questionId]);
 
   return (

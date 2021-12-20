@@ -41,6 +41,7 @@ const Test = ({ history, match }) => {
   useEffect(() => {
     !hasAnswers && dispatch(getTest(testType));
     dispatch(addTestType(testType));
+    // eslint-disable-next-line
   }, []);
 
   return (
