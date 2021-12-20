@@ -22,6 +22,7 @@ import {
   getUser,
   postLogoutUser,
 } from "../../servises/reqToApi";
+import { errorHandler } from "./errorHandlerOperation";
 
 const register = (credentials) => async (dispatch) => {
   dispatch(registerRequest());
@@ -29,7 +30,13 @@ const register = (credentials) => async (dispatch) => {
     const user = await postRegister(credentials);
     dispatch(registerSuccess(user));
   } catch (error) {
-    dispatch(registerError(error));
+    dispatch(
+      errorHandler({
+        error,
+        errAction: registerError,
+        cb: () => register(credentials),
+      })
+    );
   }
 };
 
@@ -40,7 +47,13 @@ const logIn = (credentials) => async (dispatch) => {
 
     dispatch(loginSuccess(user));
   } catch (error) {
-    dispatch(loginError(error));
+    dispatch(
+      errorHandler({
+        error,
+        errAction: loginError,
+        cb: logIn(credentials),
+      })
+    );
   }
 };
 
@@ -51,8 +64,15 @@ const logOut = () => async (dispatch) => {
 
     dispatch(logOutSuccess());
   } catch (error) {
-    dispatch(logOutError(error));
+    dispatch(
+      errorHandler({
+        error,
+        errAction: logOutError,
+        cb: logOut,
+      })
+    );
   }
+  // добавить finally с принудительным логаутом
 };
 
 const getUserGoogle = (tokenData) => async (dispatch) => {
@@ -63,27 +83,61 @@ const getUserGoogle = (tokenData) => async (dispatch) => {
     data = { userData: user, ...tokenData };
     dispatch(getUserSuccess(data));
   } catch (error) {
-    dispatch(getUserError(error));
+    dispatch(
+      errorHandler({
+        error,
+        errAction: getUserError,
+        cb: () => getUserGoogle(tokenData),
+      })
+    );
   }
 };
 
-const refreshToken = (credentials) => async (dispatch, getState) => {
+const refreshToken = (cb) => async (dispatch, getState) => {
   const {
-    auth: { user: refreshUser },
+    auth: { refreshToken, sid },
   } = getState();
 
-  if (refreshUser.refreshToken) {
+  if (refreshToken) {
     dispatch(refreshRequest());
     try {
-      const user = await postRefreshUser(
-        refreshUser.refreshToken,
-        refreshUser.sid
-      );
-      dispatch(refreshSuccess(user));
+      const data = await postRefreshUser(refreshToken, sid);
+      dispatch(refreshSuccess(data));
+
+      dispatch(cb());
     } catch (error) {
-      dispatch(refreshError(error));
+      dispatch(
+        errorHandler({
+          error,
+          errAction: refreshError,
+          cb: null,
+        })
+      );
+      dispatch(logOutSuccess());
     }
+  } else {
+    dispatch(logOutSuccess());
   }
 };
 
-export { register, logIn, getUserGoogle, refreshToken, logOut };
+const getCurUser = () => async (dispatch, getState) => {
+  dispatch(getUserRequest());
+  const {
+    auth: { token },
+  } = getState();
+
+  try {
+    const data = await getUser(token);
+    dispatch(getUserSuccess(data));
+  } catch (error) {
+    dispatch(
+      errorHandler({
+        error,
+        errAction: getUserError,
+        cb: getCurUser,
+      })
+    );
+  }
+};
+
+export { register, logIn, getUserGoogle, refreshToken, logOut, getCurUser };

@@ -2,7 +2,7 @@ const routers = {
   mainPage: "/",
   authPage: "/auth",
   contactsPage: "/contacts",
-  test: "/test",
+  test: "/test/:testType",
   results: "/results",
   usefulInfo: "/useful-info",
 };

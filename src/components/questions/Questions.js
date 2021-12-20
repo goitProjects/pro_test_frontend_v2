@@ -1,89 +1,58 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-
-import { answersListOperation } from "../../redux/operations/testOperations";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { addAnswer } from "../../redux/actions/testAction";
+import { getAnswers } from "../../redux/selectors/testSelector";
 import styles from "./Questions.module.scss";
 
-class Questions extends Component {
-  state = {
-    selectedAnswer: null,
-    answers: [],
+const Questions = ({ question, questionId, currentNumber, answers }) => {
+  const dispatch = useDispatch();
+  const checkedAnswers = useSelector(getAnswers);
+  const [checkedAnswer, setCheckedAnswer] = useState(null);
+
+  const handleChange = ({ target }) => {
+    setCheckedAnswer(target.value);
   };
 
-  componentDidUpdate(prevProps) {
-    this.props.answersListOperation({ answers: this.state.answers });
+  useEffect(() => {
+    checkedAnswer && dispatch(addAnswer({ questionId, answer: checkedAnswer }));
+    // eslint-disable-next-line
+  }, [checkedAnswer]);
 
-    if (this.props.question !== prevProps.question) {
-      this.setState({ selectedAnswer: null });
-      // eslint-disable-next-line
-      this.state.answers.map((answ) => {
-        if (this.props.questionId === answ.questionId) {
-          this.setState({ selectedAnswer: answ.answer });
-        }
-      });
-
-      localStorage.setItem("answers", JSON.stringify(this.state.answers));
-    }
-  }
-
-  addList = (questionId, value) => {
-    const currentAnswer = {
-      questionId: questionId,
-      answer: value,
-    };
-
-    this.setState((prevState) => ({
-      answers: [
-        ...prevState.answers.filter((item) => item.questionId !== questionId),
-        currentAnswer,
-      ],
-    }));
-  };
-
-  handleChange = ({ target }) => {
-    const { name, value, type, checked } = target;
-    const { questionId } = this.props;
-
-    this.setState({ [name]: type === "checkbox" ? checked : value });
-
-    this.addList(questionId, value);
-  };
-
-  render() {
-    const { selectedAnswer } = this.state;
-    const { question, answers, currentNumber } = this.props;
-
-    return (
-      <div className={styles.question}>
-        <div className={styles.wrap}>
-          <p className={styles.answersNumber}>
-            <span className={styles.answersNumberFirst}>{currentNumber}</span> /
-            12
-          </p>
-          <section className={styles.answersList}>
-            <h2 className={styles.questionTitle}>{question}?</h2>
-            {answers.map((answer) => (
-              <div key={answer} className={styles.formRadio}>
-                <input
-                  id={answer}
-                  type="radio"
-                  checked={selectedAnswer === answer}
-                  name="selectedAnswer"
-                  value={answer}
-                  onChange={this.handleChange}
-                />
-                <label htmlFor={answer}>{answer}</label>
-              </div>
-            ))}
-          </section>
-        </div>
-      </div>
+  useEffect(() => {
+    const savedAnswer = checkedAnswers.find(
+      (answer) => answer.questionId === questionId
     );
-  }
-}
+    console.log("savedAnswer :>> ", savedAnswer);
+    setCheckedAnswer(savedAnswer ? savedAnswer.answer : null);
+    // eslint-disable-next-line
+  }, [questionId]);
 
-const mapDispatchToProps = {
-  answersListOperation: answersListOperation,
+  return (
+    <div className={styles.question}>
+      <div className={styles.wrap}>
+        <p className={styles.answersNumber}>
+          <span className={styles.answersNumberFirst}>{currentNumber}</span> /
+          12
+        </p>
+        <section className={styles.answersList}>
+          <h2 className={styles.questionTitle}>{question}?</h2>
+          {answers.map((answer, idx) => (
+            <div key={idx} className={styles.formRadio}>
+              <input
+                id={idx}
+                type="radio"
+                checked={answer === checkedAnswer}
+                name="selectedAnswer"
+                value={answer}
+                onChange={handleChange}
+              />
+              <label htmlFor={idx}>{answer}</label>
+            </div>
+          ))}
+        </section>
+      </div>
+    </div>
+  );
 };
 
-export default connect(null, mapDispatchToProps)(Questions);
+export default Questions;

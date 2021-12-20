@@ -2,22 +2,23 @@ import { lazy, Suspense, useEffect } from "react";
 import { Redirect, Route, Switch, useHistory, useLocation } from "react-router";
 import Layout from "../layout/Layout";
 import {
+  getCurUser,
   getUserGoogle,
-  refreshToken,
 } from "../../redux/operations/authOperations";
 import routers from "../../routers/routers";
 import { useDispatch, useSelector } from "react-redux";
 import Loader from "../loader/Loader";
 
 import queryString from "query-string";
-function App() {
+import { getIsAuth } from "../../redux/selectors/authSelector";
+
+const App = () => {
   const dispatch = useDispatch();
   const location = useLocation();
   const history = useHistory();
-  const isAuth = useSelector((state) => !!state.auth.token);
+  const isAuth = useSelector(getIsAuth);
 
   useEffect(() => {
-    // dispatch(refreshToken());
     const params = queryString.parse(location.search);
     const keysArray = Object.keys(params);
 
@@ -25,6 +26,7 @@ function App() {
       dispatch(getUserGoogle(params));
       history.push("/");
     }
+    isAuth && dispatch(getCurUser());
     // eslint-disable-next-line
   }, []);
 
@@ -88,6 +90,6 @@ function App() {
       </Layout>
     </div>
   );
-}
+};
 
 export default App;

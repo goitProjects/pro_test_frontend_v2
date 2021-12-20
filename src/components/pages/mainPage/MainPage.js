@@ -5,7 +5,6 @@ import queryString from "query-string";
 import { getUserGoogle } from "../../../redux/operations/authOperations";
 import sprite from "../../../sprites/sprite.svg";
 import styles from "./MainPage.module.scss";
-import { test } from "../../../redux/operations/testOperations";
 
 class MainPage extends Component {
   componentDidMount() {
@@ -35,11 +34,7 @@ class MainPage extends Component {
           </div>
         </section>
         <section className={styles["link-box"]}>
-          <Link
-            className={styles["link-box__technical"]}
-            to="/test"
-            onClick={() => this.props.onTestDataGetting("technical")}
-          >
+          <Link className={styles["link-box__technical"]} to="/test/technical">
             <span className={styles["link-box__text"]}>
               QA technical training
             </span>
@@ -49,11 +44,7 @@ class MainPage extends Component {
               </svg>
             </span>
           </Link>
-          <Link
-            className={styles["link-box__theory"]}
-            to="/test"
-            onClick={() => this.props.onTestDataGetting("theory")}
-          >
+          <Link className={styles["link-box__theory"]} to="/test/theory">
             <span className={styles["link-box__text"]}>Testing theory</span>
             <span className={styles["link-box__link"]}>
               <svg className={styles["link-box__svg"]}>
@@ -69,7 +60,6 @@ class MainPage extends Component {
 
 const mapDispatchToProps = {
   onGetUserGoogle: getUserGoogle,
-  onTestDataGetting: test,
 };
 
 export default connect(null, mapDispatchToProps)(MainPage);

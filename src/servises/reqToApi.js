@@ -75,9 +75,9 @@ const getTheory = async () => {
   }
 };
 
-const postTechResults = async (results) => {
+const postTechResults = async (answers) => {
   try {
-    const response = await axios.post("/qa-test/tech-results", results);
+    const response = await axios.post("/qa-test/tech-results", { answers });
     return await response.data;
   } catch (error) {
     console.log("error", { error });
@@ -85,9 +85,9 @@ const postTechResults = async (results) => {
   }
 };
 
-const postTheoryResults = async (results) => {
+const postTheoryResults = async (answers) => {
   try {
-    const response = await axios.post("/qa-test/theory-results", results);
+    const response = await axios.post("/qa-test/theory-results", { answers });
     return await response.data;
   } catch (error) {
     console.log("error", { error });
@@ -97,11 +97,10 @@ const postTheoryResults = async (results) => {
 
 const getUser = async (userToken) => {
   try {
-    await token.set(userToken);
+    token.set(userToken);
     const user = await axios.get("/user");
-    return await user.data;
+    return user.data;
   } catch (error) {
-    console.log("error", { error });
     throw error;
   }
 };
@@ -109,14 +108,14 @@ const getUser = async (userToken) => {
 const getTestData = async (type) => {
   try {
     if (type === "technical") {
-      const data = await axios.get("/qa-test/tech");
+      const { data } = await axios.get("/qa-test/tech");
       return data;
     }
 
-    const data = await axios.get("/qa-test/theory");
+    const { data } = await axios.get("/qa-test/theory");
     return data;
   } catch (error) {
-    console.error(error);
+    throw error;
   }
 };
 
