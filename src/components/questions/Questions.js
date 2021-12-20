@@ -1,19 +1,29 @@
 import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addAnswer } from "../../redux/actions/testAction";
+import { getAnswers } from "../../redux/selectors/testSelector";
 import styles from "./Questions.module.scss";
 
-const Questions = ({ question, questionId, answers, currentNumber }) => {
+const Questions = ({ question, questionId, currentNumber, answers }) => {
   const dispatch = useDispatch();
+  const checkedAnswers = useSelector(getAnswers);
+  const [checkedAnswer, setCheckedAnswer] = useState(null);
 
-  const [selectedAnswer, setSelectedAnswer] = useState(null);
-
-  const handleChange = ({ target }) => setSelectedAnswer(target.value);
+  const handleChange = ({ target }) => {
+    setCheckedAnswer(target.value);
+  };
 
   useEffect(() => {
-    selectedAnswer &&
-      dispatch(addAnswer({ questionId, answer: selectedAnswer }));
-  }, [selectedAnswer]);
+    checkedAnswer && dispatch(addAnswer({ questionId, answer: checkedAnswer }));
+  }, [checkedAnswer]);
+
+  useEffect(() => {
+    const savedAnswer = checkedAnswers.find(
+      (answer) => answer.questionId === questionId
+    );
+    console.log("savedAnswer :>> ", savedAnswer);
+    setCheckedAnswer(savedAnswer ? savedAnswer.answer : null);
+  }, [questionId]);
 
   return (
     <div className={styles.question}>
@@ -24,17 +34,17 @@ const Questions = ({ question, questionId, answers, currentNumber }) => {
         </p>
         <section className={styles.answersList}>
           <h2 className={styles.questionTitle}>{question}?</h2>
-          {answers.map((answer) => (
-            <div key={answer} className={styles.formRadio}>
+          {answers.map((answer, idx) => (
+            <div key={idx} className={styles.formRadio}>
               <input
-                id={answer}
+                id={idx}
                 type="radio"
-                checked={selectedAnswer === answer}
+                checked={answer === checkedAnswer}
                 name="selectedAnswer"
                 value={answer}
                 onChange={handleChange}
               />
-              <label htmlFor={answer}>{answer}</label>
+              <label htmlFor={idx}>{answer}</label>
             </div>
           ))}
         </section>

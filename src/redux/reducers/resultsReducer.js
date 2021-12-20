@@ -3,6 +3,7 @@ import {
   resultsRequest,
   resultsSuccess,
   resultsError,
+  resetResults,
 } from "../actions/resultsAction";
 
 const initialUserState = {
@@ -13,6 +14,7 @@ const results = createReducer(
   { ...initialUserState },
   {
     [resultsSuccess]: (_, { payload }) => payload,
+    [resetResults]: () => initialUserState,
   }
 );
 

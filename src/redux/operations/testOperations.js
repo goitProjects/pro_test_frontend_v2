@@ -1,34 +1,22 @@
-import {
-  _Request,
-  _Success,
-  _Error,
-  addAnswersListRequest,
-  addAnswersListSuccess,
-  addAnswersListError,
-} from "../actions/testAction";
+import { test_Request, test_Success, test_Error } from "../actions/testAction";
 import { getTestData } from "../../servises/reqToApi";
+import { errorHandler } from "./errorHandlerOperation";
 
-const test = (type) => async (dispatch) => {
-  dispatch(_Request());
+const getTest = (type) => async (dispatch) => {
+  dispatch(test_Request());
 
   try {
     const testData = await getTestData(type);
-    dispatch(_Success({ data: testData.data, type }));
+    dispatch(test_Success({ data: testData, type }));
   } catch (error) {
-    console.dir("error", error);
-    dispatch(_Error(error));
+    dispatch(
+      errorHandler({
+        error,
+        errType: test_Error,
+        cb: () => getTest(type),
+      })
+    );
   }
 };
 
-const answersListOperation = (answers) => async (dispatch) => {
-  dispatch(addAnswersListRequest());
-
-  try {
-    dispatch(addAnswersListSuccess(answers));
-  } catch (error) {
-    console.dir("error", error);
-    dispatch(addAnswersListError(error));
-  }
-};
-
-export { test, answersListOperation };
+export { getTest };

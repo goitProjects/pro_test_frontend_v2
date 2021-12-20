@@ -1,71 +1,74 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import Questions from "../../questions/Questions";
+import Loader from "../../loader/Loader";
 import sprite from "../../../sprites/sprite.svg";
 import styles from "./Test.module.scss";
 import {
-  getTestData,
-  getTestType,
+  getAnswers,
+  getIsLoading,
+  getTests,
+  getCanSubmitAnswers,
 } from "../../../redux/selectors/testSelector";
+import { getTest } from "../../../redux/operations/testOperations";
+import { addTestType } from "../../../redux/actions/testAction";
 
-class Test extends Component {
-  state = {
-    questionNumber: 0,
+const Test = ({ history, match }) => {
+  const dispatch = useDispatch();
+  const {
+    params: { testType },
+  } = match;
+
+  const testData = useSelector(getTests);
+  const hasAnswers = !!useSelector(getAnswers).length;
+  const isLoading = useSelector(getIsLoading);
+  const canSubmitAnswers = useSelector(getCanSubmitAnswers);
+
+  const [questionNum, setQuestionNum] = useState(0);
+
+  const curTest = testData[questionNum];
+  const curNum = questionNum + 1;
+
+  const handleFinishButtonClick = () => {
+    history.push("/results");
   };
 
-  handleFinishButtonClick = () => {
-    this.props.history.push("/results");
+  const handleChangeQuestionNum = (e) => {
+    const { action } = e.currentTarget.dataset;
+    setQuestionNum((prev) => (action === "increase" ? prev + 1 : prev - 1));
   };
 
-  handleQuestionNumberIncrease = () => {
-    this.setState((prevState) => ({
-      questionNumber: prevState.questionNumber + 1,
-    }));
-  };
+  useEffect(() => {
+    !hasAnswers && dispatch(getTest(testType));
+    dispatch(addTestType(testType));
+  }, []);
 
-  handleQuestionNumberDecrease = () => {
-    this.setState((prevState) => ({
-      questionNumber: prevState.questionNumber - 1,
-    }));
-  };
-
-  render() {
-    const { testData } = this.props;
-    const { questionNumber: idx } = this.state;
-    const curTest = testData[idx];
-
-    return (
+  return (
+    <>
+      {isLoading && <Loader />}
       <div className={styles.container}>
         <section className={styles["button-section"]}>
-          {this.props.testType && (
+          {testType && (
             <h2 className={styles.header}>
               <div>[ Testing </div>
-              <div>{this.props.testType}_ ]</div>
+              <div>{testType}_ ]</div>
             </h2>
           )}
           <button
             className={styles["finish-button"]}
-            onClick={this.handleFinishButtonClick}
-            disabled={
-              !JSON.parse(localStorage.getItem("answers")) ||
-              JSON.parse(localStorage.getItem("answers")).length <
-                testData.length - 2
-            }
+            onClick={handleFinishButtonClick}
+            disabled={!canSubmitAnswers}
           >
-            {!!this.props.testType ? "Finish test" : "Select question type"}
+            {!!testType ? "Finish test" : "Select question type"}
           </button>
         </section>
-        {curTest && (
-          <Questions
-            currentNumber={idx + 1}
-            {...curTest}
-          />
-        )}
+        {curTest && <Questions currentNumber={curNum} {...curTest} />}
         <section className={styles["button-section"]}>
           <button
             className={styles["switch-button"]}
-            onClick={this.handleQuestionNumberDecrease}
-            disabled={idx === 0}
+            onClick={handleChangeQuestionNum}
+            disabled={questionNum === 0}
+            data-action="decrease"
           >
             <svg
               className={`${styles["switch-button__svg"]} ${styles["rotate-arrow"]}`}
@@ -78,8 +81,9 @@ class Test extends Component {
           </button>
           <button
             className={styles["switch-button"]}
-            onClick={this.handleQuestionNumberIncrease}
-            disabled={idx === testData.length - 1}
+            onClick={handleChangeQuestionNum}
+            disabled={questionNum === testData.length - 1}
+            data-action="increase"
           >
             <span
               className={`${styles["switch-button__text"]} ${styles["blacken-text"]}`}
@@ -94,13 +98,8 @@ class Test extends Component {
           </button>
         </section>
       </div>
-    );
-  }
-}
+    </>
+  );
+};
 
-const mapStateToProps = (state) => ({
-  testData: getTestData(state),
-  testType: getTestType(state),
-});
-
-export default connect(mapStateToProps)(Test);
+export default Test;

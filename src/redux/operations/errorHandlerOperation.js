@@ -6,29 +6,34 @@ import {
   refreshError,
   registerError,
 } from "../actions/authAction";
+import { test_Error } from "../actions/testAction";
 
 export const errorHandler =
   ({ error, cb, errType }) =>
-  (dispatch, getState) => {
-    console.log("errorHandler", errType);
+  (dispatch) => {
     if (error.request?.status === 401) {
       cb && dispatch(refreshToken(cb));
     }
+
+    const { message } = error;
+
     switch (errType) {
       case getUserError:
-        dispatch(getUserError(error.message));
+        dispatch(getUserError(message));
         break;
       case registerError:
-        dispatch(registerError(error.message));
+        dispatch(registerError(message));
         break;
       case loginError:
-        dispatch(loginError(error.message));
+        dispatch(loginError(message));
       case logOutError:
-        dispatch(logOutError(error.message));
+        dispatch(logOutError(message));
       case getUserError:
-        dispatch(getUserError(error.message));
+        dispatch(getUserError(message));
       case refreshError:
-        dispatch(refreshError(error.message));
+        dispatch(refreshError(message));
+      case test_Error:
+        dispatch(test_Error(message));
       default:
         return;
     }

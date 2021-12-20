@@ -4,7 +4,6 @@ import Layout from "../layout/Layout";
 import {
   getCurUser,
   getUserGoogle,
-  refreshToken,
 } from "../../redux/operations/authOperations";
 import routers from "../../routers/routers";
 import { useDispatch, useSelector } from "react-redux";
@@ -20,7 +19,6 @@ const App = () => {
   const isAuth = useSelector(getIsAuth);
 
   useEffect(() => {
-    // dispatch(refreshToken());
     const params = queryString.parse(location.search);
     const keysArray = Object.keys(params);
 
