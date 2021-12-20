@@ -33,7 +33,7 @@ const register = (credentials) => async (dispatch) => {
     dispatch(
       errorHandler({
         error,
-        errType: registerError,
+        errAction: registerError,
         cb: () => register(credentials),
       })
     );
@@ -50,7 +50,7 @@ const logIn = (credentials) => async (dispatch) => {
     dispatch(
       errorHandler({
         error,
-        errType: loginError,
+        errAction: loginError,
         cb: logIn(credentials),
       })
     );
@@ -67,7 +67,7 @@ const logOut = () => async (dispatch) => {
     dispatch(
       errorHandler({
         error,
-        errType: logOutError,
+        errAction: logOutError,
         cb: logOut,
       })
     );
@@ -86,7 +86,7 @@ const getUserGoogle = (tokenData) => async (dispatch) => {
     dispatch(
       errorHandler({
         error,
-        errType: getUserError,
+        errAction: getUserError,
         cb: () => getUserGoogle(tokenData),
       })
     );
@@ -109,7 +109,7 @@ const refreshToken = (cb) => async (dispatch, getState) => {
       dispatch(
         errorHandler({
           error,
-          errType: refreshError,
+          errAction: refreshError,
           cb: null,
         })
       );
@@ -133,7 +133,7 @@ const getCurUser = () => async (dispatch, getState) => {
     dispatch(
       errorHandler({
         error,
-        errType: getUserError,
+        errAction: getUserError,
         cb: getCurUser,
       })
     );

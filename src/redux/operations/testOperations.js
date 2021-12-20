@@ -12,7 +12,7 @@ const getTest = (type) => async (dispatch) => {
     dispatch(
       errorHandler({
         error,
-        errType: test_Error,
+        errAction: test_Error,
         cb: () => getTest(type),
       })
     );
