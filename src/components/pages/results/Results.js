@@ -26,7 +26,9 @@ class Results extends Component {
     if (testAnswers && testAnswers.length === 12) {
       resultsOperation(testAnswers, typeOfTests);
     }
-    results.answers === null && this.props.history.push("/");
+    results.answers === null &&
+      testAnswers.length === 0 &&
+      this.props.history.push("/");
   }
 
   componentDidUpdate(_, prevProps) {
