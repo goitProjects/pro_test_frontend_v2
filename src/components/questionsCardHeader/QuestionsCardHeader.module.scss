@@ -1,0 +1,63 @@
+.button-section {
+  display: flex;
+  justify-content: space-between;
+}
+
+.title {
+  width: 86px;
+  font-family: "Montserrat-500", sans-serif;
+  font-size: 14px;
+  line-height: 17px;
+  letter-spacing: 0.02em;
+}
+
+.finish-button {
+  width: 130px;
+  font-family: "Montserrat-500", sans-serif;
+  font-size: 10px;
+  line-height: 12px;
+  text-align: center;
+  letter-spacing: 0.02em;
+  color: #ffffff;
+  padding: 18px 14px;
+  background-color: #ff6b09;
+  border: none;
+  transition: 0.25s;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.9;
+    box-shadow: 2px 3px 4px 2px #696969;
+    background-color: #000000;
+    transform: rotateY(10deg);
+  }
+
+  &:disabled {
+    opacity: 0.4;
+  }
+
+  &:disabled:hover {
+    box-shadow: none;
+    background-color: #ff6b09;
+    transform: none;
+    cursor: default;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .button-section {
+    margin: 20px 0 8px 0;
+  }
+
+  .title {
+    width: 140px;
+    font-size: 22px;
+    line-height: 27px;
+  }
+
+  .finish-button {
+    width: 190px;
+    font-size: 14px;
+    line-height: 17px;
+  }
+}

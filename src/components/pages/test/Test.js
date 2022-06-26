@@ -1,46 +1,41 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import qs from "query-string";
 import Questions from "../../questions/Questions";
 import Loader from "../../loader/Loader";
-import sprite from "../../../sprites/sprite.svg";
 import styles from "./Test.module.scss";
 import {
-  getAnswers,
+  getHasAnswers,
   getIsLoading,
-  getTests,
-  getCanSubmitAnswers,
+  getHasQuestions,
+  getHasTest,
 } from "../../../redux/selectors/testSelector";
 import { getTest } from "../../../redux/operations/testOperations";
-import { addTestType } from "../../../redux/actions/testAction";
+import { addTestType, resetTest } from "../../../redux/actions/testAction";
+import QustionsCardPaginator from "../../qustionsCardPaginator/QustionsCardPaginator";
+import QuestionsCardHeader from "../../questionsCardHeader/QuestionsCardHeader";
+import { useHistory } from "react-router-dom";
 
-const Test = ({ history, match }) => {
+const Test = ({ match }) => {
   const dispatch = useDispatch();
+  const history = useHistory();
   const {
     params: { testType },
   } = match;
 
-  const testData = useSelector(getTests);
-  const hasAnswers = !!useSelector(getAnswers).length;
   const isLoading = useSelector(getIsLoading);
-  const canSubmitAnswers = useSelector(getCanSubmitAnswers);
+  // const hasAnswers = useSelector(getHasAnswers);
+  const hasTest = useSelector(getHasTest);
 
-  const [questionNum, setQuestionNum] = useState(0);
+  const { question } = qs.parse(history.location.search);
+  const questionNum = Number(question);
 
-  const curTest = testData[questionNum];
-  const curNum = questionNum + 1;
-
-  const handleFinishButtonClick = () => {
-    history.push("/results");
-  };
-
-  const handleChangeQuestionNum = (e) => {
-    const { action } = e.currentTarget.dataset;
-    setQuestionNum((prev) => (action === "increase" ? prev + 1 : prev - 1));
-  };
 
   useEffect(() => {
-    !hasAnswers && dispatch(getTest(testType));
-    dispatch(addTestType(testType));
+    if (!hasTest) {
+      dispatch(getTest(testType));
+      dispatch(addTestType(testType));
+    }
     // eslint-disable-next-line
   }, []);
 
@@ -48,56 +43,17 @@ const Test = ({ history, match }) => {
     <>
       {isLoading && <Loader />}
       <div className={styles.container}>
-        <section className={styles["button-section"]}>
-          {testType && (
-            <h2 className={styles.header}>
-              <div>[ Testing </div>
-              <div>{testType}_ ]</div>
-            </h2>
-          )}
-          <button
-            className={styles["finish-button"]}
-            onClick={handleFinishButtonClick}
-            disabled={!canSubmitAnswers}
-          >
-            {!!testType ? "Finish test" : "Select question type"}
-          </button>
-        </section>
-        {curTest && <Questions currentNumber={curNum} {...curTest} />}
-        <section className={styles["button-section"]}>
-          <button
-            className={styles["switch-button"]}
-            onClick={handleChangeQuestionNum}
-            disabled={questionNum === 0}
-            data-action="decrease"
-          >
-            <svg
-              className={`${styles["switch-button__svg"]} ${styles["rotate-arrow"]}`}
-            >
-              <use href={sprite + "#arrow"}></use>
-            </svg>
-            <span className={styles["switch-button__text"]}>
-              Previous question
-            </span>
-          </button>
-          <button
-            className={styles["switch-button"]}
-            onClick={handleChangeQuestionNum}
-            disabled={questionNum === testData.length - 1}
-            data-action="increase"
-          >
-            <span
-              className={`${styles["switch-button__text"]} ${styles["blacken-text"]}`}
-            >
-              Next question
-            </span>
-            <svg
-              className={`${styles["switch-button__svg"]} ${styles["blacken-arrow"]}`}
-            >
-              <use href={sprite + "#arrow"}></use>
-            </svg>
-          </button>
-        </section>
+        <QuestionsCardHeader testType={testType} />
+
+        {hasTest && (
+          <Questions
+            questionNum={questionNum}
+          />
+        )}
+
+        <QustionsCardPaginator
+          questionNum={questionNum}
+        />
       </div>
     </>
   );

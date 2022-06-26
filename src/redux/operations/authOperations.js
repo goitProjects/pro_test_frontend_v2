@@ -98,24 +98,15 @@ const refreshToken = (cb) => async (dispatch, getState) => {
     auth: { refreshToken, sid },
   } = getState();
 
-  if (refreshToken) {
-    dispatch(refreshRequest());
-    try {
-      const data = await postRefreshUser(refreshToken, sid);
-      dispatch(refreshSuccess(data));
+  if (!refreshToken) return dispatch(logOutSuccess());
 
-      dispatch(cb());
-    } catch (error) {
-      dispatch(
-        errorHandler({
-          error,
-          errAction: refreshError,
-          cb: null,
-        })
-      );
-      dispatch(logOutSuccess());
-    }
-  } else {
+  dispatch(refreshRequest());
+  try {
+    const data = await postRefreshUser(refreshToken, sid);
+    dispatch(refreshSuccess(data));
+
+    dispatch(cb());
+  } catch (error) {
     dispatch(logOutSuccess());
   }
 };

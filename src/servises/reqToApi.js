@@ -26,7 +26,7 @@ const postSignInUser = async (user) => {
     const userData = await axios.post("/auth/login", user);
     await token.set(userData.data.accessToken);
 
-    return await userData.data;
+    return userData.data;
   } catch (error) {
     console.log("error", error);
     throw error;
@@ -36,7 +36,7 @@ const postSignInUser = async (user) => {
 const postLogoutUser = async () => {
   try {
     await axios.post("/auth/logout");
-    await token.unSet();
+    token.unSet();
   } catch (error) {
     console.log("error", { error });
     throw error;
@@ -48,9 +48,8 @@ const postRefreshUser = async (refreshToken, sid) => {
   try {
     const user = await axios.post("auth/refresh", { sid });
     token.set(user.data.newAccessToken);
-    return await user.data;
+    return user.data;
   } catch (error) {
-    console.log("error", { error });
     throw error;
   }
 };
@@ -58,9 +57,8 @@ const postRefreshUser = async (refreshToken, sid) => {
 const getTech = async () => {
   try {
     const questions = await axios.get("/qa-test/tech");
-    return await questions.data;
+    return questions.data;
   } catch (error) {
-    console.log("error", { error });
     throw error;
   }
 };
@@ -68,9 +66,8 @@ const getTech = async () => {
 const getTheory = async () => {
   try {
     const questions = await axios.get("/qa-test/theory");
-    return await questions.data;
+    return questions.data;
   } catch (error) {
-    console.log("error", { error });
     throw error;
   }
 };
@@ -78,9 +75,8 @@ const getTheory = async () => {
 const postTechResults = async (answers) => {
   try {
     const response = await axios.post("/qa-test/tech-results", { answers });
-    return await response.data;
+    return response.data;
   } catch (error) {
-    console.log("error", { error });
     throw error;
   }
 };
@@ -88,9 +84,8 @@ const postTechResults = async (answers) => {
 const postTheoryResults = async (answers) => {
   try {
     const response = await axios.post("/qa-test/theory-results", { answers });
-    return await response.data;
+    return response.data;
   } catch (error) {
-    console.log("error", { error });
     throw error;
   }
 };

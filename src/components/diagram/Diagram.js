@@ -37,12 +37,24 @@ class Diagram extends Component {
           data={[
             ["Task", "Hours per Day"],
             [
-              `${this.state.percent}%  Correct `,
-              Number(Math.round((this.state.percent / 100) * 12)),
+              // `${this.state.percent}%  Correct `,
+              `${30}%  Correct `,
+              // Correct development version -START
+              // Number(Math.round((this.state.percent / 100) * 12)),
+              // Correct development version -END
+              // Version with bug for qa-marathon -START 
+              30
+              // Version with bug for qa-marathon -END 
             ],
             [
-              `${100 - this.state.percent}%  Incorrect `,
-              12 - Number(Math.round((this.state.percent / 100) * 12)),
+              // `${100 - this.state.percent}%  Incorrect `,
+              `${95}%  Incorrect `,
+              // Correct development version -START
+              // 12 - Number(Math.round((this.state.percent / 100) * 12)),
+              // Correct development version -END
+              // Version with bug for qa-marathon -START 
+              95
+              // Version with bug for qa-marathon -END 
             ],
           ]}
           options={{

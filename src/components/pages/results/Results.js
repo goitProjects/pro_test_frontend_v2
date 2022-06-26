@@ -32,17 +32,17 @@ class Results extends Component {
   }
 
   componentDidUpdate(_, prevProps) {
-    const { results, testAnswers, typeOfTests, resetTest } = this.props;
+    const { results } = this.props;
 
     if (results !== prevProps.results) {
       this.setState({ results });
-      testAnswers.length && typeOfTests && resetTest();
     }
   }
 
   componentWillUnmount() {
-    const { resetResults } = this.props;
+    const { resetResults, resetTest } = this.props;
     resetResults();
+    resetTest();
   }
 
   render() {
@@ -66,11 +66,11 @@ class Results extends Component {
           <img className={styles.catImages} src={catImages} alt="cat"></img>
           <p className={styles.mainMessage}>{results.mainMessage}</p>
           <p className={styles.secondaryMessage}>{results.secondaryMessage}</p>
-          <NavLink to={"/"} className={styles.buttonText}>
+          {/* <NavLink to={this.props.location} className={styles.buttonText}> */}
             <button className={styles.button} type="button">
               Try again
             </button>
-          </NavLink>
+          {/* </NavLink> */}
         </div>
       )
     );

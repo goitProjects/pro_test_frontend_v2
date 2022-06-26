@@ -1,0 +1,78 @@
+.button-section {
+  display: flex;
+  justify-content: space-between;
+}
+
+.switch-button {
+  width: 55px;
+  padding: 9px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ff6b09;
+  border: none;
+  cursor: pointer;
+  transition: 0.25s;
+
+  &:hover {
+    opacity: 0.9;
+    box-shadow: 2px 3px 4px 2px #696969;
+  }
+
+  &:disabled {
+    opacity: 0.4;
+    cursor: default;
+  }
+
+  &:disabled:hover {
+    box-shadow: none;
+  }
+
+  & ~ .switch-button {
+    background-color: #ffffff;
+  }
+}
+
+.switch-button__text {
+  display: none;
+  color: #ffffff;
+  font-family: "Montserrat-500", sans-serif;
+}
+
+.switch-button__svg {
+  fill: #ffffff;
+  width: 24px;
+  height: 16px;
+}
+
+.rotate-arrow {
+  transform: rotateY(180deg);
+}
+
+.blacken-arrow {
+  fill: #000000;
+}
+
+.blacken-text {
+  color: #000000;
+}
+
+@media screen and (min-width: 768px) {
+  .button-section {
+    margin: 20px 0 8px 0;
+  }
+
+  .switch-button {
+    width: 210px;
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 15px;
+    font-size: 12px;
+    line-height: 15px;
+  }
+
+  .switch-button__text {
+    display: block;
+    margin-right: 34px;
+  }
+}

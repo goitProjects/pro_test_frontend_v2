@@ -8,14 +8,23 @@ const getTestType = (state) => {
   return state.tests.type;
 };
 
-const getIsLoading = (state) => state.tests.loading;
 const getAnswers = (state) => state.tests.answers;
+const getIsLoading = (state) => state.tests.loading;
+const getHasTest = (state) => Boolean(getTests(state).length);
+const getHasAnswers = (state) => Boolean(getAnswers(state).length);
 
-const getCanSubmitAnswers = createSelector(
-  [getTests, getAnswers],
-  (tests, answers) => {
-    return tests.length === answers.length;
-  }
-);
+// const getCanSubmitAnswers = createSelector(
+//   [getTests, getAnswers],
+//   (tests, answers) => {
+//     return tests.length === answers.length;
+//   }
+// );
 
-export { getTests, getTestType, getIsLoading, getAnswers, getCanSubmitAnswers };
+export {
+  getTests,
+  getTestType,
+  getIsLoading,
+  getAnswers,
+  getHasTest,
+  getHasAnswers,
+};

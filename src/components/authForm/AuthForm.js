@@ -71,12 +71,14 @@ class AuthForm extends Component {
         >
           <ModalErrorMessage />
         </CSSTransition>
-        <p className={s.desc}>You can use your Google Account to authorize:</p>
+        {/* remove Google auth for QA marathon -START */}
+        {/* <p className={s.desc}>You can use your Google Account to authorize:</p> */}
 
-        <button onClick={this.onHandleSigIn} className={s.googleButton}>
+        {/* <button onClick={this.onHandleSigIn} className={s.googleButton}>
           Google
-        </button>
-        <p className={s.desc}>Or login to our app using e-mail and password:</p>
+        </button> */}
+        {/* <p className={s.desc}>Or login to our app using e-mail and password:</p> */}
+        {/* remove Google auth for QA marathon -END */}
 
         <form className={s.form} onSubmit={this.onHandleSubmit}>
           <input

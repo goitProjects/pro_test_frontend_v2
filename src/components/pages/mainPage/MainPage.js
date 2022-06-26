@@ -7,16 +7,16 @@ import sprite from "../../../sprites/sprite.svg";
 import styles from "./MainPage.module.scss";
 
 class MainPage extends Component {
-  componentDidMount() {
-    const { location } = this.props;
-    const params = queryString.parse(location.search);
-    const keysArray = Object.keys(params);
+  // componentDidMount() {
+  //   const { location } = this.props;
+  //   const params = queryString.parse(location.search);
+  //   const keysArray = Object.keys(params);
 
-    if (keysArray.length > 0) {
-      this.props.onGetUserGoogle(params);
-      this.props.history.push("/");
-    }
-  }
+  //   if (keysArray.length > 0) {
+  //     this.props.onGetUserGoogle(params);
+  //     this.props.history.push("/");
+  //   }
+  // }
 
   render() {
     return (
@@ -34,7 +34,10 @@ class MainPage extends Component {
           </div>
         </section>
         <section className={styles["link-box"]}>
-          <Link className={styles["link-box__technical"]} to="/test/technical">
+          <Link
+            className={styles["link-box__technical"]}
+            to="/test/technical?question=1"
+          >
             <span className={styles["link-box__text"]}>
               QA technical training
             </span>
@@ -44,7 +47,10 @@ class MainPage extends Component {
               </svg>
             </span>
           </Link>
-          <Link className={styles["link-box__theory"]} to="/test/theory">
+          <Link
+            className={styles["link-box__theory"]}
+            to="/test/theory?question=1"
+          >
             <span className={styles["link-box__text"]}>Testing theory</span>
             <span className={styles["link-box__link"]}>
               <svg className={styles["link-box__svg"]}>
