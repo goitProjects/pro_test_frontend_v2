@@ -107,4 +107,4 @@ dist
 .netlify
 
 # build folder
-build
+build/
