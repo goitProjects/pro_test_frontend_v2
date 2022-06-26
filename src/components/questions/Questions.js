@@ -1,11 +1,11 @@
 import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { addAnswer, resetTest } from "../../redux/actions/testAction";
+import { addAnswer } from "../../redux/actions/testAction";
 import { getAnswers, getTests } from "../../redux/selectors/testSelector";
 import styles from "./Questions.module.scss";
 
-const Questions = ({ questionNum, setQuestionNum }) => {
+const Questions = ({ questionNum }) => {
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -40,7 +40,6 @@ const Questions = ({ questionNum, setQuestionNum }) => {
   useEffect(() => {
     const canSwowResult = checkedAnswers.length === testData.length;
     if (!canSwowResult && savedAnswer && isCurQuestion) {
-      // checkedAnswer.length > 0 && setQuestionNum((prev) => prev + 1);
       checkedAnswers.length > 0 &&
         history.push({ search: `question=${questionNum + 1}` });
     }

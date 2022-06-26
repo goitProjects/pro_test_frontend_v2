@@ -96,6 +96,15 @@
     text-combine-upright: all;
   }
 
+  &:last-child {
+    list-style: none;
+    & a {
+      margin: 0;
+      font-weight: 700;
+      color: #ff6b01;
+    }
+  }
+
   @media screen and (min-width: 768px) {
     font-size: 14px;
     line-height: 22px;
