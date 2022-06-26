@@ -5,8 +5,6 @@ import { getCurUser } from "../../redux/operations/authOperations";
 import routers from "../../routers/routers";
 import { useDispatch, useSelector } from "react-redux";
 import Loader from "../loader/Loader";
-
-// import queryString from "query-string";
 import { getIsAuth } from "../../redux/selectors/authSelector";
 
 const App = () => {

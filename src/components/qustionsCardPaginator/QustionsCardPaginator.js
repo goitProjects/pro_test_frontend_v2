@@ -1,11 +1,13 @@
 import { useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
+import { getAnswers, getTestType } from "../../redux/selectors/testSelector";
+import testTypes from "../../options/testTypes";
 import styles from "./QustionsCardPaginator.module.scss";
 import sprite from "../../sprites/sprite.svg";
-import { getAnswers } from "../../redux/selectors/testSelector";
-import { useHistory } from "react-router-dom";
 
 const QustionsCardPaginator = ({ questionNum }) => {
   const history = useHistory();
+  const testType = useSelector(getTestType);
 
   const answersQuantity = useSelector(getAnswers).length;
   const canPushNextBtn =
@@ -14,10 +16,7 @@ const QustionsCardPaginator = ({ questionNum }) => {
 
   const handleChangeQuestionNum = (e) => {
     const { action } = e.currentTarget.dataset;
-    // setQuestionNum((prev) => (action === "increase" ? prev + 1 : prev - 1));
-    console.log(
-      `question=${action === "increase" ? questionNum + 1 : questionNum - 1}`
-    );
+    if (testType === testTypes.TECH) return;
     history.push({
       ...history.location,
       search: `question=${

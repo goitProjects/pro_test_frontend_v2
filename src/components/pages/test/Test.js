@@ -11,7 +11,7 @@ import {
   getHasTest,
 } from "../../../redux/selectors/testSelector";
 import { getTest } from "../../../redux/operations/testOperations";
-import { addTestType, resetTest } from "../../../redux/actions/testAction";
+import { addTestType } from "../../../redux/actions/testAction";
 import QustionsCardPaginator from "../../qustionsCardPaginator/QustionsCardPaginator";
 import QuestionsCardHeader from "../../questionsCardHeader/QuestionsCardHeader";
 import { useHistory } from "react-router-dom";
@@ -24,12 +24,10 @@ const Test = ({ match }) => {
   } = match;
 
   const isLoading = useSelector(getIsLoading);
-  // const hasAnswers = useSelector(getHasAnswers);
   const hasTest = useSelector(getHasTest);
 
   const { question } = qs.parse(history.location.search);
   const questionNum = Number(question);
-
 
   useEffect(() => {
     if (!hasTest) {
@@ -45,15 +43,9 @@ const Test = ({ match }) => {
       <div className={styles.container}>
         <QuestionsCardHeader testType={testType} />
 
-        {hasTest && (
-          <Questions
-            questionNum={questionNum}
-          />
-        )}
+        {hasTest && <Questions questionNum={questionNum} />}
 
-        <QustionsCardPaginator
-          questionNum={questionNum}
-        />
+        <QustionsCardPaginator questionNum={questionNum} />
       </div>
     </>
   );

@@ -25,7 +25,7 @@ const authPersistConfig = {
 const answersPersistConfig = {
   key: "qa",
   storage,
-  whitelist: ["answers", "test"],
+  whitelist: ["answers", "test", "type"],
 };
 
 const rootReducer = combineReducers({
