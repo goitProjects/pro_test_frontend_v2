@@ -1,13 +1,11 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import qs from "query-string";
 import Questions from "../../questions/Questions";
 import Loader from "../../loader/Loader";
 import styles from "./Test.module.scss";
 import {
-  getHasAnswers,
   getIsLoading,
-  getHasQuestions,
   getHasTest,
 } from "../../../redux/selectors/testSelector";
 import { getTest } from "../../../redux/operations/testOperations";

@@ -10,7 +10,6 @@ import {
   getUserError,
   refreshRequest,
   refreshSuccess,
-  refreshError,
   logOutRequest,
   logOutSuccess,
   logOutError,
