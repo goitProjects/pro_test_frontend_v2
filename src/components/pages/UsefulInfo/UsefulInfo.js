@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useRestTest } from "../../../hooks/useRestTest";
 import styles from "./UsefulInfo.module.scss";
 
 const materialsType = {
@@ -8,6 +9,8 @@ const materialsType = {
 };
 
 const UsefulInfo = () => {
+  useRestTest();
+
   const [isMoreLinkResorces, setIsMoreLinkResorces] = useState(false);
   const [isMoreLinkLiterature] = useState(false);
 

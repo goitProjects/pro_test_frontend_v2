@@ -4,8 +4,10 @@ import { v4 as uuidv4 } from "uuid";
 
 import s from "./ContactsPage.module.scss";
 import { contacts } from "./data";
+import { useRestTest } from "../../../hooks/useRestTest";
 
 const ContactsPage = () => {
+  useRestTest();
   return (
     <div className={s.wrapper}>
       <div className={s.headContainer}>

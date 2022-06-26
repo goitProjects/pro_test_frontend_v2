@@ -1,10 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useRestTest } from "../../../hooks/useRestTest";
 import testTypes from "../../../options/testTypes";
 import sprite from "../../../sprites/sprite.svg";
 import styles from "./MainPage.module.scss";
 
 const MainPage = () => {
+  useRestTest();
+
   return (
     <div className={styles.container}>
       <blockquote className={styles.quote}>

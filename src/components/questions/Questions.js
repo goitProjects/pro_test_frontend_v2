@@ -54,6 +54,11 @@ const Questions = ({ questionNum }) => {
     // eslint-disable-next-line
   }, [questionId]);
 
+  useEffect(() => {
+    history.push({ search: `question=${checkedAnswers.length + 1}` });
+    // eslint-disable-next-line
+  }, []);
+
   return (
     <div className={styles.question}>
       <div className={styles.wrap}>
