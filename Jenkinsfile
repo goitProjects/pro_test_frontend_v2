@@ -1,7 +1,7 @@
   
 @Library('jenkins-common')_
  
-node("nodejs"){
+node("all-biulds"){
     stage('Load credentials') {
         withCredentials([
             string(credentialsId: 'goit_jenkins_build_bot_api_key', variable: 'telegramNotifyChannelBotApiToken'),
@@ -10,15 +10,15 @@ node("nodejs"){
             string(credentialsId: 'tech_alert_bot_api_key', variable: 'telegramAlertChannelBotApiToken'),
             string(credentialsId: 'tech_alert_chat_id', variable: 'telegramAlertChannelChatId'),
 
-            //add scp redential for https://pro-test.goit.global/
-            string(credentialsId: 'ssh user_host_for_frontend_stud', variable: 'sshUserAndHost')
+            //add scp redential for https://pro-test.qa.goit.global/
+            string(credentialsId: 'ftp_user_pass_host_for_pro_test_qa', variable: 'ftpUserAndHost')
         ]) {
                 env.telegramNotifyChannelBotApiToken = telegramNotifyChannelBotApiToken;
                 env.telegramNotifyChannelChatId = telegramNotifyChannelChatId;
                 env.telegramAlertChannelBotApiToken = telegramAlertChannelBotApiToken;
                 env.telegramAlertChannelChatId = telegramAlertChannelChatId;
             
-                env.sshUserAndHost = sshUserAndHost;
+                env.ftpUserAndHost = ftpUserAndHost;
         }
     }
     
@@ -42,7 +42,7 @@ node("nodejs"){
     
     stage('Clone Git Repo') {
         catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
-            git branch: 'main', credentialsId: 'github-goitProjects', url: 'git@github.com:goitProjects/pro_test_frontend_v2.git'
+            git branch: 'for_qa_marathon', credentialsId: 'github-goitProjects', url: 'git@github.com:goitProjects/pro_test_frontend_v2.git'
         }
     }
     
@@ -62,8 +62,8 @@ node("nodejs"){
 
         if (success) {
             catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
-                //sent files to https://pro-test.goit.global/
-                sh "scp -r ./build/* ${env.sshUserAndHost}:/home/frontend/sites/www/pro-test.goit.global/html"
+                //sent files to https://pro-test.qa.goit.global/
+                sh "ncftpput ${env.ftpUserAndHost} / ./build/*"
             }
         }
     }
