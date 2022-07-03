@@ -16,6 +16,7 @@ import { authReducer } from "./reducers/authReducer";
 import { resultsReducer } from "./reducers/resultsReducer";
 import { testReducer } from "./reducers/testReducer";
 import langReducer from "./slices/langSlice";
+import { changeTesyByLang } from "./middlewares/changeTestByLang";
 
 const authPersistConfig = {
   key: "auth",
@@ -43,7 +44,7 @@ const store = configureStore({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
-    }),
+    }).concat(changeTesyByLang),
 });
 
 const persistor = persistStore(store);
