@@ -1,6 +1,9 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import { useRestTest } from "../../../hooks/useRestTest";
 import styles from "./UsefulInfo.module.scss";
+import { contentLang } from "../../../options/langData";
+import { getLangValue } from "../../../redux/selectors/langSelectors";
 
 const materialsType = {
   LITERATURE: "literature",
@@ -8,8 +11,12 @@ const materialsType = {
   JOBS: "jobs",
 };
 
+const { literature, resources } = contentLang.materialsPage;
+
 const UsefulInfo = () => {
   useRestTest();
+
+  const lang = useSelector(getLangValue);
 
   const [isMoreLinkResorces, setIsMoreLinkResorces] = useState(false);
   const [isMoreLinkLiterature] = useState(false);
@@ -34,7 +41,7 @@ const UsefulInfo = () => {
     <section className={styles.usefulInfo}>
       <div className={styles["container"]}>
         <div className={styles["usefulInfo-sources"]}>
-          <p className={styles["sections-name"]}>Useful resources</p>
+          <p className={styles["sections-name"]}>{resources.title[lang]}</p>
           <hr />
           <ol className={styles["sources-list"]}>
             <li className={styles["sources-item"]}>
@@ -97,7 +104,7 @@ const UsefulInfo = () => {
         </div>
 
         <div className={styles["usefulInfo-sources"]}>
-          <p className={styles["sections-name"]}>Useful literature</p>
+          <p className={styles["sections-name"]}>{literature.title[lang]}</p>
           <hr />
           <ol className={styles["sources-list"]}>
             <li className={styles["sources-item"]}> Testing dot.com Savin</li>
