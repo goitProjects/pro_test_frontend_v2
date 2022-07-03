@@ -1,19 +1,24 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import AuthForm from "../../authForm/AuthForm";
 import s from "./AuthPage.module.scss";
+import { getLangValue } from "../../../redux/selectors/langSelectors";
+import { contentLang } from "../../../options/langData";
+
+const { mainDescr } = contentLang.authPage;
 
 const AuthPage = () => {
+  const lang = useSelector(getLangValue);
+
   return (
     <div className={s.container}>
       <div className={s.inner}>
         <div className={s.box}>
           <h2 className={s.header}>Pro Test</h2>
           <p className={s.content}>
-            <strong>[</strong> We will help you find weak points in knowledge so
-            that you can strengthen it. We will show you what is relevant to
-            know for a <span className={s.contentAccent}>QA Engineer</span> and
-            will try to make the learning process more diverse_{" "}
-            <strong>]</strong>
+            <strong>[</strong> {mainDescr[lang][0]}{" "}
+            <span className={s.contentAccent}>{mainDescr[lang][1]}</span>{" "}
+            {mainDescr[lang][2]}_<strong>]</strong>
           </p>
         </div>
         <AuthForm />

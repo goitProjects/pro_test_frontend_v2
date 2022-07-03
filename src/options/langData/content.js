@@ -21,8 +21,8 @@ const contentLang = {
   },
   authPage: {
     mainDescr: {
-      en: "We will help you find weak points in knowledge so that you can strengthen it. We will show you what is relevant to know for a QA Engineer and will try to make the learning process more diverse",
-      uk: "Ми допоможемо вам знайти слабкі місця в знаннях, щоб ви могли його зміцнити. Ми покажемо вам, що важливо знати для інженера з QA і спробуємо зробити навчальний процес більш різноманітним",
+      en: ["We will help you find weak points in knowledge so that you can strengthen it. We will show you what is relevant to know for a", "QA Engineer", "and will try to make the learning process more diverse"],
+      uk: ["Ми допоможемо вам знайти слабкі місця в знаннях, щоб ви могли його зміцнити. Ми покажемо вам, що важливо знати для", "Інженера з QA", "і спробуємо зробити навчальний процес більш різноманітним"],
     },
     formTitle: {
       en: "Login to our app using e-mail and password",
