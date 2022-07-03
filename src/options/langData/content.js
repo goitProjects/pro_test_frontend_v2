@@ -21,8 +21,16 @@ const contentLang = {
   },
   authPage: {
     mainDescr: {
-      en: ["We will help you find weak points in knowledge so that you can strengthen it. We will show you what is relevant to know for a", "QA Engineer", "and will try to make the learning process more diverse"],
-      uk: ["Ми допоможемо вам знайти слабкі місця в знаннях, щоб ви могли його зміцнити. Ми покажемо вам, що важливо знати для", "Інженера з QA", "і спробуємо зробити навчальний процес більш різноманітним"],
+      en: [
+        "We will help you find weak points in knowledge so that you can strengthen it. We will show you what is relevant to know for a",
+        "QA Engineer",
+        "and will try to make the learning process more diverse",
+      ],
+      uk: [
+        "Ми допоможемо вам знайти слабкі місця в знаннях, щоб ви могли його зміцнити. Ми покажемо вам, що важливо знати для",
+        "Інженера з QA",
+        "і спробуємо зробити навчальний процес більш різноманітним",
+      ],
     },
     formTitle: {
       en: "Login to our app using e-mail and password",
@@ -51,8 +59,14 @@ const contentLang = {
   },
   mainPage: {
     mainTitle: {
-      en: "Regression testing. What is it?If the system compiles, that's good, if it boots, that's great!",
-      uk: "Регресійне тестування. Що це таке? Якщо система компілюється - це добре, якщо завантажується - чудово!",
+      en: [
+        "Regression testing. What is it?",
+        "If the system compiles, that's good, if it boots, that's great!",
+      ],
+      uk: [
+        "Регресійне тестування. Що це таке?",
+        "Якщо система компілюється - це добре, якщо завантажується - чудово!",
+      ],
     },
     descr: {
       author: {
@@ -67,7 +81,7 @@ const contentLang = {
     titleNavigation: {
       tech: {
         en: "Testing technical",
-        uk: "Технічна підготовка",
+        uk: "QA технічна підготовка",
       },
       theory: {
         en: "Testing theory",
@@ -168,22 +182,20 @@ const contentLang = {
     },
     btnTitle: {
       en: "Try again",
-      uk: "Спробуйте знову"
+      uk: "Спробуйте знову",
     },
     totalTestDescr: {
       title: {
         en: "Not bad!",
-        uk: "Непогано!"
+        uk: "Непогано!",
       },
       text: {
         en: "But you still need to learn some materials.",
-        uk: "Але вам все одно потрібно вивчити деякі матеріали."
-      }
-    }
+        uk: "Але вам все одно потрібно вивчити деякі матеріали.",
+      },
+    },
   },
-  contactsPage: {
-
-  }
+  contactsPage: {},
 };
 
 export default contentLang;
