@@ -15,6 +15,14 @@ import { resetResults } from "../../../redux/actions/resultsAction";
 
 import styles from "./Results.module.scss";
 import Loader from "../../loader/Loader";
+import { contentLang } from "../../../options/langData";
+import { getLangValue } from "../../../redux/selectors/langSelectors";
+
+const { title, descr, result, resultDescr, btnTitle, totalTestDescr } =
+  contentLang.resultPage;
+
+const createPropName = (value) =>
+  value?.trim().toLowerCase().split(" ").join("_") || undefined;
 
 class Results extends Component {
   state = { results: null };
@@ -45,7 +53,16 @@ class Results extends Component {
   }
 
   render() {
-    const { results } = this.props;
+    const { results, lang } = this.props;
+
+    const mainMessagePropName = createPropName(results.mainMessage);
+
+    const mainMessage =
+      totalTestDescr[mainMessagePropName]?.title[lang] ||
+      totalTestDescr["not_bad!"].title[lang];
+    const secondaryMessage =
+      totalTestDescr[mainMessagePropName]?.text[lang] ||
+      totalTestDescr["not_bad!"].text[lang];
 
     return (
       // testAnswers === null || testAnswers.length < 12 ? (
@@ -55,20 +72,25 @@ class Results extends Component {
         <Loader />
       ) : (
         <div className={styles.results}>
-          <h2 className={styles.resultTitle}>Results</h2>
+          <h2 className={styles.resultTitle}>{title[lang]}</h2>
           <p className={styles.resultName}>
             {this.props.typeOfTests === "technical"
-              ? `[ Testing technical_ ]`
-              : `[ Testing theory_ ]`}
+              ? `[ ${descr.tech[lang]}_ ]`
+              : `[ ${descr.theory[lang]}_ ]`}
           </p>
-          <Diagram percent={results.result} />
+          <Diagram
+            percent={results.result}
+            lang={lang}
+            result={result}
+            resultDescr={resultDescr}
+          />
           <img className={styles.catImages} src={catImages} alt="cat"></img>
-          <p className={styles.mainMessage}>{results.mainMessage}</p>
-          <p className={styles.secondaryMessage}>{results.secondaryMessage}</p>
+          <p className={styles.mainMessage}>{mainMessage}</p>
+          <p className={styles.secondaryMessage}>{secondaryMessage}</p>
           {/* <NavLink to={this.props.location} className={styles.buttonText}> */}
-            <button className={styles.button} type="button">
-              Try again
-            </button>
+          <button className={styles.button} type="button">
+            {btnTitle[lang]}
+          </button>
           {/* </NavLink> */}
         </div>
       )
@@ -80,6 +102,7 @@ const mapStateToProps = (state) => ({
   testAnswers: getTestAnswers(state), // Масив ответов из сторе
   results: getResultsOfTest(state),
   typeOfTests: getTestType(state), //для определения какой запрос делать
+  lang: getLangValue(state),
 });
 
 const mapDispatchToProps = {

@@ -6,7 +6,7 @@ import styles from "./Diagram.module.scss";
 class Diagram extends Component {
   state = { percent: null };
 
-  componentDidUpdate(prevState, prevProps) {
+  componentDidUpdate(_, prevProps) {
     const percent = this.props.percent.slice(0, -1);
 
     if (percent !== prevProps.percent) {
@@ -15,15 +15,17 @@ class Diagram extends Component {
   }
 
   render() {
-    return  this.state.percent === "0%" ? (
+    const { lang, result, resultDescr } = this.props;
+
+    return this.state.percent === "0%" ? (
       <div className={styles.container}>
         <div className={styles.answers}>
           <p className={styles.textAnswers}>
-            Correct answers -{" "}
+            {resultDescr.correct[lang]} -{" "}
             <span className={styles.textAnswersNumber}>0</span>
           </p>
           <p className={styles.textAnswers}>
-            Total questions -{" "}
+            {resultDescr.total[lang]} -{" "}
             <span className={styles.textAnswersNumber}>12</span>
           </p>
         </div>
@@ -36,26 +38,8 @@ class Diagram extends Component {
           loader={<div>Loading Chart</div>}
           data={[
             ["Task", "Hours per Day"],
-            [
-              // `${this.state.percent}%  Correct `,
-              `${30}%  Correct `,
-              // Correct development version -START
-              // Number(Math.round((this.state.percent / 100) * 12)),
-              // Correct development version -END
-              // Version with bug for qa-marathon -START 
-              30
-              // Version with bug for qa-marathon -END 
-            ],
-            [
-              // `${100 - this.state.percent}%  Incorrect `,
-              `${95}%  Incorrect `,
-              // Correct development version -START
-              // 12 - Number(Math.round((this.state.percent / 100) * 12)),
-              // Correct development version -END
-              // Version with bug for qa-marathon -START 
-              95
-              // Version with bug for qa-marathon -END 
-            ],
+            [`${30}%  ${result.correct[lang]} `, 30],
+            [`${95}%  ${result.incorrect[lang]} `, 95],
           ]}
           options={{
             pieStartAngle: 100,
@@ -71,13 +55,13 @@ class Diagram extends Component {
         />
         <div className={styles.answers}>
           <p className={styles.textAnswers}>
-            Correct answers -{" "}
+            {resultDescr.correct[lang]} -{" "}
             <span className={styles.textAnswersNumber}>
               {Number(Math.round((this.state.percent / 100) * 12))}
             </span>
           </p>
           <p className={styles.textAnswers}>
-            Total questions -{" "}
+            {resultDescr.total[lang]} -{" "}
             <span className={styles.textAnswersNumber}>12</span>
           </p>
         </div>

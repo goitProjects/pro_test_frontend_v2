@@ -183,7 +183,7 @@ const contentLang = {
         en: "Correct answers",
         uk: "Правильних відповідей",
       },
-      incorrect: {
+      total: {
         en: "Total questions",
         uk: "Всього питань",
       },
@@ -193,13 +193,35 @@ const contentLang = {
       uk: "Спробуйте знову",
     },
     totalTestDescr: {
-      title: {
-        en: "Not bad!",
-        uk: "Непогано!",
+      maybe_next_time: {
+        title: {
+          en: "Mayby next time",
+          uk: "Можливо наступного разу!",
+        },
+        text: {
+          en: "Your QA knowledge is pretty weak, but don't give up!",
+          uk: "Ваші знання QA досить слабкі, але не здавайтеся!",
+        },
       },
-      text: {
-        en: "But you still need to learn some materials.",
-        uk: "Але вам все одно потрібно вивчити деякі матеріали.",
+      "not_bad!": {
+        title: {
+          en: "Not bad!",
+          uk: "Непогано!",
+        },
+        text: {
+          en: "But you still need to learn some materials.",
+          uk: "Але вам все одно потрібно вивчити деякі матеріали.",
+        },
+      },
+      "oh_no!": {
+        title: {
+          en: "Oh no!",
+          uk: "О ні!",
+        },
+        text: {
+          en: "You lack basic QA knowledge",
+          uk: "Вам бракує базових знань із забезпечення якості",
+        },
       },
     },
   },
