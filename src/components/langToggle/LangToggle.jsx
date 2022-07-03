@@ -7,12 +7,11 @@ import s from "./LangToggle.module.scss";
 import { getIsAuth } from "../../redux/selectors/authSelector";
 
 const LangToggle = () => {
-  const dispatch = useDispatch(changeLang);
+  const dispatch = useDispatch();
   const isAuth = useSelector(getIsAuth);
   const langOption = useSelector(getLangOption);
 
   const handleChange = (option) => {
-    console.log(option);
     dispatch(changeLang(option));
   };
 

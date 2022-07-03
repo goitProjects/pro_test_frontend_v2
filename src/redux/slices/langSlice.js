@@ -5,9 +5,9 @@ const langSlice = createSlice({
   name: "lang",
   initialState: JSON.parse(localStorage.getItem("lang")) ?? options[0],
   reducers: {
-    changeLang(state, { payload }) {
-      state = payload;
+    changeLang(_, { payload }) {
       localStorage.setItem("lang", JSON.stringify(payload));
+      return payload;
     },
   },
 });
