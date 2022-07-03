@@ -1,22 +1,53 @@
+.wrapper {
+  border-bottom: 1px solid #e2e3e5;
+}
+
 .container {
   box-sizing: border-box;
   margin: 0 auto;
   min-width: 320px;
   padding: 20px 20px;
   display: flex;
-  align-items: center;
   justify-content: space-between;
+  // justify-content: space-around;
+  align-items: center;
 }
 
-.wrapper {
-  border-bottom: 1px solid #e2e3e5;
+.nav {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+
+  @media screen and (max-width: 360px) {
+    flex-wrap: wrap-reverse;
+  }
+
+  @media screen and (min-width: 361px) and (max-width: 375px) {
+    justify-content: space-between;
+  }
 }
+
+.navWrapper {
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  @media screen and (min-width: 768px) {
+    // margin-left: 10px;
+  }
+}
+
 .isHidden {
   display: none;
 }
 .burger {
   position: relative;
   cursor: pointer;
+
+  @media screen and (min-width: 361px) and (max-width: 375px) {
+    align-self: center;
+  }
 }
 
 .burgerOn {
@@ -37,11 +68,11 @@
   position: absolute;
   top: -26px;
   left: -20px;
-}
-.nav {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
+
+  @media screen and (max-width: 360px) {
+    display: none;
+  }
+  
 }
 .logoutIcon {
   display: none;
@@ -84,6 +115,32 @@
   position: relative;
   left: 1px;
 }
+
+@media screen and (min-width: 768px) {
+  .container {
+    min-width: 768px;
+  }
+  .isHidden {
+    display: block;
+  }
+
+  .burger {
+    display: none;
+  }
+  .logoutIcon {
+    display: block;
+    border: none;
+    outline: none;
+    background-color: transparent;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .container {
+    max-width: 1280px;
+  }
+}
+
 // TRANSITION
 .appear {
   transform: translateY(-200%);
@@ -111,29 +168,4 @@
   transform: translateY(-200%);
   opacity: 0;
   transition: all 250ms linear;
-}
-
-@media screen and (min-width: 768px) {
-  .container {
-    min-width: 768px;
-  }
-  .isHidden {
-    display: block;
-  }
-
-  .burger {
-    display: none;
-  }
-  .logoutIcon {
-    display: block;
-    border: none;
-    outline: none;
-    background-color: transparent;
-  }
-}
-
-@media screen and (min-width: 1280px) {
-  .container {
-    max-width: 1280px;
-  }
 }

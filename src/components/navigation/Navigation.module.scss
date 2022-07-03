@@ -39,7 +39,7 @@
   background: #ff6b09;
 }
 .mainNav ul li:not(:last-child) {
-  margin-right: 85px;
+  margin-right: 50px;
 }
 .headerBtn {
   border: none;
@@ -121,5 +121,9 @@
   }
   .mainNav ul {
     max-width: 400px;
+  }
+
+  .mainNav ul li:not(:last-child) {
+    margin-right: 85px;
   }
 }

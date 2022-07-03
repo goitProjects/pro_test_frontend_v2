@@ -8,6 +8,7 @@ import sprite from "../../sprites/sprite.svg";
 import styles from "./Header.module.scss";
 import { logOut } from "../../redux/operations/authOperations";
 import { getIsAuth, getUserData } from "../../redux/selectors/authSelector";
+import LangToggle from "../langToggle/LangToggle";
 
 class Header extends Component {
   state = {
@@ -34,6 +35,7 @@ class Header extends Component {
           <div className={styles.wrapper}>
             <div className={styles.container}>
               <Logo />
+              {!isAuthorized && <LangToggle />}
               <div className={styles.nav}>
                 <CSSTransition
                   in={true}
@@ -42,8 +44,11 @@ class Header extends Component {
                   classNames={styles}
                   unmountOnExit
                 >
-                  <div className={styles.isHidden}>
-                    <Navigation isAuthorized={isAuthorized} />
+                  <div className={styles.navWrapper}>
+                    <div className={styles.isHidden}>
+                      <Navigation isAuthorized={isAuthorized} />
+                    </div>
+                    {isAuthorized && <LangToggle />}
                   </div>
                 </CSSTransition>
                 {email && <UserInfo email={email} />}
