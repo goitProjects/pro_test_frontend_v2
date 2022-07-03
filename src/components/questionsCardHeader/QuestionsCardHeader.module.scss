@@ -1,6 +1,7 @@
 .button-section {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .title {
@@ -13,6 +14,7 @@
 
 .finish-button {
   width: 130px;
+  height: 51px;
   font-family: "Montserrat", sans-serif;
   font-size: 10px;
   line-height: 12px;

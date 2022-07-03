@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import qs from "query-string";
 import Questions from "../../questions/Questions";
@@ -12,7 +13,11 @@ import { getTest } from "../../../redux/operations/testOperations";
 import { addTestType } from "../../../redux/actions/testAction";
 import QustionsCardPaginator from "../../qustionsCardPaginator/QustionsCardPaginator";
 import QuestionsCardHeader from "../../questionsCardHeader/QuestionsCardHeader";
-import { useHistory } from "react-router-dom";
+import { contentLang } from "../../../options/langData";
+import { getLangValue } from "../../../redux/selectors/langSelectors";
+
+const { btnsPaginator: btnsPaginatorContent, header: headerContent } =
+  contentLang.testPage;
 
 const Test = ({ match }) => {
   const dispatch = useDispatch();
@@ -23,6 +28,7 @@ const Test = ({ match }) => {
 
   const isLoading = useSelector(getIsLoading);
   const hasTest = useSelector(getHasTest);
+  const lang = useSelector(getLangValue);
 
   const { question } = qs.parse(history.location.search);
   const questionNum = Number(question);
@@ -39,11 +45,19 @@ const Test = ({ match }) => {
     <>
       {isLoading && <Loader />}
       <div className={styles.container}>
-        <QuestionsCardHeader testType={testType} />
+        <QuestionsCardHeader
+          testType={testType}
+          headerContent={headerContent}
+          lang={lang}
+        />
 
         {hasTest && <Questions questionNum={questionNum} />}
 
-        <QustionsCardPaginator questionNum={questionNum} />
+        <QustionsCardPaginator
+          questionNum={questionNum}
+          lang={lang}
+          btnsPaginatorContent={btnsPaginatorContent}
+        />
       </div>
     </>
   );

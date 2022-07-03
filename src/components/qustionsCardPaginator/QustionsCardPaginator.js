@@ -5,7 +5,7 @@ import testTypes from "../../options/testTypes";
 import styles from "./QustionsCardPaginator.module.scss";
 import sprite from "../../sprites/sprite.svg";
 
-const QustionsCardPaginator = ({ questionNum }) => {
+const QustionsCardPaginator = ({ questionNum, lang, btnsPaginatorContent }) => {
   const history = useHistory();
   const testType = useSelector(getTestType);
 
@@ -38,7 +38,9 @@ const QustionsCardPaginator = ({ questionNum }) => {
         >
           <use href={sprite + "#arrow"}></use>
         </svg>
-        <span className={styles["switch-button__text"]}>Previous question</span>
+        <span className={styles["switch-button__text"]}>
+          {btnsPaginatorContent.prev[lang]}
+        </span>
       </button>
       <button
         className={styles["switch-button"]}
@@ -49,7 +51,7 @@ const QustionsCardPaginator = ({ questionNum }) => {
         <span
           className={`${styles["switch-button__text"]} ${styles["blacken-text"]}`}
         >
-          Next question
+          {btnsPaginatorContent.next[lang]}
         </span>
         <svg
           className={`${styles["switch-button__svg"]} ${styles["blacken-arrow"]}`}

@@ -90,14 +90,26 @@ const contentLang = {
     },
   },
   testPage: {
-    title: {
-      tech: {
-        en: "Testing technical",
-        uk: "Технічна підготовка",
+    header: {
+      title: {
+        en: [
+          "Testing",
+          {
+            tech: "thechnical",
+            theory: "theory",
+          },
+        ],
+        uk: [
+          "Тестування",
+          {
+            technical: "технічне",
+            theory: "теорії",
+          },
+        ],
       },
-      theory: {
-        en: "Testing theory",
-        uk: "Теорі тестування",
+      btnFinish: {
+        en: "Finish test",
+        uk: "Закінчити тест",
       },
     },
     btnsPaginator: {
@@ -109,10 +121,6 @@ const contentLang = {
         en: "Previous question",
         uk: "Попереднє питання",
       },
-    },
-    btnFinish: {
-      en: "Finish test",
-      uk: "Закінчити тест",
     },
   },
   materialsPage: {
@@ -195,7 +203,6 @@ const contentLang = {
       },
     },
   },
-  contactsPage: {},
 };
 
 export default contentLang;
