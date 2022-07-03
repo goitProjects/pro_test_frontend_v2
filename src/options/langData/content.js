@@ -3,15 +3,15 @@ const contentLang = {
     navigation: {
       home: {
         en: "Home",
-        uk: "головна",
+        uk: "Головна",
       },
       materials: {
         en: "Materials",
-        uk: "матеріали",
+        uk: "Матеріали",
       },
       contacts: {
         en: "Contacts",
-        uk: "контакти",
+        uk: "Контакти",
       },
     },
     logout: {
