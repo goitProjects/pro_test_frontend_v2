@@ -4,28 +4,11 @@ import { getLangOption } from "../../redux/selectors/langSelectors";
 import { changeLang } from "../../redux/slices/langSlice";
 import { options } from "../../options/langToggleOptions";
 import s from "./LangToggle.module.scss";
-
-// const customStyles = {
-//     option: (provided, state) => ({
-//       ...provided,
-//     //   borderBottom: '1px dotted pink',
-//     //   color: state.isSelected ? 'red' : 'blue',
-//     //   padding: 20,
-//     }),
-//     control: () => ({
-//       // none of react-select's styles are passed to <Control />
-//       width: 80,
-//     }),
-//     singleValue: (provided, state) => {
-//       const opacity = state.isDisabled ? 0.5 : 1;
-//       const transition = 'opacity 300ms';
-  
-//       return { ...provided, opacity, transition };
-//     }
-//   }
+import { getIsAuth } from "../../redux/selectors/authSelector";
 
 const LangToggle = () => {
   const dispatch = useDispatch(changeLang);
+  const isAuth = useSelector(getIsAuth);
   const langOption = useSelector(getLangOption);
 
   const handleChange = (option) => {
@@ -33,15 +16,12 @@ const LangToggle = () => {
     dispatch(changeLang(option));
   };
 
-  console.log("langOption :>> ", langOption);
-
   return (
-    <div className={s.container}>
+    <div className={`${isAuth ? s.container : s.containerNotAuth}`}>
       <Select
         options={options}
         defaultValue={langOption}
         onChange={handleChange}
-        // styles={customStyles}
       />
     </div>
   );
