@@ -6,6 +6,10 @@ import { getAuthError } from "../../redux/selectors/authSelector";
 import ModalErrorMessage from "./modalErrorMessage/ModalErrorMessage";
 import s from "./AuthForm.module.scss";
 import styles from "./modalAnimation.module.scss";
+import { contentLang } from "../../options/langData";
+import { getLangValue } from "../../redux/selectors/langSelectors";
+
+const { formTitle, formBtns, inputPlaceholder } = contentLang.authPage;
 
 class AuthForm extends Component {
   state = {
@@ -60,7 +64,7 @@ class AuthForm extends Component {
 
   render() {
     const { email, password, isModal } = this.state;
-    const { error } = this.props;
+    const { error, lang } = this.props;
     return (
       <div className={s.container}>
         <CSSTransition
@@ -77,8 +81,8 @@ class AuthForm extends Component {
         {/* <button onClick={this.onHandleSigIn} className={s.googleButton}>
           Google
         </button> */}
-        {/* <p className={s.desc}>Or login to our app using e-mail and password:</p> */}
         {/* remove Google auth for QA marathon -END */}
+        <p className={s.desc}>{formTitle[lang]}:</p>
 
         <form className={s.form} onSubmit={this.onHandleSubmit}>
           <input
@@ -86,7 +90,7 @@ class AuthForm extends Component {
             className={s.input}
             name="email"
             value={email}
-            placeholder="E-mail"
+            placeholder={inputPlaceholder.email[lang]}
             required
             onChange={this.onHandleChange}
           />
@@ -95,16 +99,16 @@ class AuthForm extends Component {
             className={s.input}
             name="password"
             value={password}
-            placeholder="Password"
+            placeholder={inputPlaceholder.password[lang]}
             required
             onChange={this.onHandleChange}
           />
           <div className={s.buttonContainer}>
             <button type="submit" className={s.button} data-action="login">
-              Sign in
+              {formBtns.login[lang]}
             </button>
             <button type="submit" className={s.button} data-action="signup">
-              Sign up
+              {formBtns.register[lang]}
             </button>
           </div>
         </form>
@@ -115,6 +119,7 @@ class AuthForm extends Component {
 
 const mapStateToProps = (state) => ({
   error: getAuthError(state),
+  lang: getLangValue(state),
 });
 
 const mapDispatchToProps = {
