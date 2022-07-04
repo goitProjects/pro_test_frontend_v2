@@ -11,7 +11,7 @@ export const changeTesyByLang = (store) => (next) => (action) => {
     const { value: lang } = store.getState().lang;
     if (lang === "uk") {
       const { data, type } = action.payload;
-      const newData = data.map((el) => test[type][el.questionId]);
+      const newData = data.map((el) => test[type][el.questionId - 1]);
       action.payload.data = newData;
     }
   }

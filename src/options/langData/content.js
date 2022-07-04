@@ -223,6 +223,36 @@ const contentLang = {
           uk: "Вам бракує базових знань із забезпечення якості",
         },
       },
+      "great!": {
+        title: {
+          en: "Great!",
+          uk: "Дуже добре!",
+        },
+        text: {
+          en: "You have very strong QA knowledge",
+          uk: "У вас дуже сильні знання по QA",
+        },
+      },
+      "perfect!": {
+        title: {
+          en: "Perfect!",
+          uk: "Ідеально!",
+        },
+        text: {
+          en: "You've answered all questions correctly, congratulations!",
+          uk: "Ви правильно відповіли на всі запитання, вітаємо!",
+        },
+      },
+      keep_improving: {
+        title: {
+          en: "Keep improving",
+          uk: "Продовжуйте вдосконалюватися",
+        },
+        text: {
+          en: "Keep learning and you'll get there!",
+          uk: "Продовжуйте вчитися, і ви досягнете цього!",
+        },
+      },
     },
   },
 };
