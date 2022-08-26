@@ -1,7 +1,7 @@
   
 @Library('jenkins-common')_
  
-node("nodejs"){
+node("all-biulds"){
     stage('Load credentials') {
         withCredentials([
             string(credentialsId: 'goit_jenkins_build_bot_api_key', variable: 'telegramNotifyChannelBotApiToken'),
