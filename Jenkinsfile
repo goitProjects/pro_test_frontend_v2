@@ -7,18 +7,14 @@ node("all-biulds"){
             string(credentialsId: 'goit_jenkins_build_bot_api_key', variable: 'telegramNotifyChannelBotApiToken'),
             string(credentialsId: 'goit_jenkins_build_chat_id', variable: 'telegramNotifyChannelChatId'),
                 
-            string(credentialsId: 'tech_alert_bot_api_key', variable: 'telegramAlertChannelBotApiToken'),
-            string(credentialsId: 'tech_alert_chat_id', variable: 'telegramAlertChannelChatId'),
 
-            //add scp redential for https://pro-test.qa.goit.global/
-            string(credentialsId: 'ftp_user_pass_host_for_pro_test_qa', variable: 'ftpUserAndHost')
+            //add scp redential for https://pro-test.qa.m.goit.global/
+            string(credentialsId: 'ssh user_host_for_frontend_stud', variable: 'sshUserAndHost')
         ]) {
                 env.telegramNotifyChannelBotApiToken = telegramNotifyChannelBotApiToken;
                 env.telegramNotifyChannelChatId = telegramNotifyChannelChatId;
-                env.telegramAlertChannelBotApiToken = telegramAlertChannelBotApiToken;
-                env.telegramAlertChannelChatId = telegramAlertChannelChatId;
             
-                env.ftpUserAndHost = ftpUserAndHost;
+                env.sshUserAndHost = sshUserAndHost;
         }
     }
     
@@ -62,8 +58,15 @@ node("all-biulds"){
 
         if (success) {
             catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
-                //sent files to https://pro-test.qa.goit.global/
-                sh "ncftpput ${env.ftpUserAndHost} / ./build/*"
+                //create folder 
+                def mkdirCmd = "mkdir -p /home/frontend/sites/www/pro-test.qa.m.goit.global/html"
+                sh "ssh ${env.sshUserAndHost} ${mkdirCmd}"
+
+                //sent files to https://pro-test.qa.m.goit.global/
+                sh "scp -r ./build/* ${env.sshUserAndHost}:/home/frontend/sites/www/pro-test.qa.m.goit.global/html"
+
+                //clear project build folder
+                sh "rm -rf .[!.]* *"
             }
         }
     }
@@ -96,13 +99,5 @@ node("all-biulds"){
             message
         )
         
-        //Send message to alert channel only if failed or restore build success
-        if (!success || (success && !previousBuildSuccess)) {
-             sendTelegramChannelMessage(
-                env.telegramAlertChannelBotApiToken,
-                env.telegramAlertChannelChatId,
-                message
-            )
-        }
     }
 }
