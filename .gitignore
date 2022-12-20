@@ -106,5 +106,9 @@ dist
 # Local Netlify folder
 .netlify
 
+
+# ignore package-lock 
+package-lock.json
+
 # build folder
 build/
