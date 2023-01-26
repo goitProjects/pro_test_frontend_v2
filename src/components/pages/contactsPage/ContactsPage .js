@@ -12,11 +12,11 @@ const ContactsPage = () => {
   useRestTest();
 
   // розкоментувати після того як буде переклад контактів польською
-  // const lang = useSelector(getLangValue);
+  const lang = useSelector(getLangValue);
   
   // видалити після того як буде переклад контактів польською
-  const langState = useSelector(getLangValue);
-  const lang = langState === "uk" || langState === "en" ? langState : "en";
+  // const langState = useSelector(getLangValue);
+  // const lang = langState === "uk" || langState === "en" ? langState : "en";
   // видалити після того як буде переклад контактів польською -END
 
   return (
