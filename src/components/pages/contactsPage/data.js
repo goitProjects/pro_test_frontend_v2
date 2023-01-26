@@ -131,66 +131,66 @@ const contacts = {
   ],
   pl: [
     {
-      name: "ІВАН ІЛЬЧЕНКО",
+      name: "IWAN ILCZENKO",
       photo: IvanIlch,
-      position: "Front-End розробник",
+      position: "Front-End Developer",
       tasks:
-        "Я був майстром Scrum у цьому проекті. Я розробив заголовок, логотип, модальне вікно для навігації, адаптивний дизайн.",
+        "W tym projekcie byłem Scrum Masterem. Zaprojektowałem nagłówek, logo, nawigacyjne okno dla nawigacji, design responsywny.",
       email: "ilchenkoivan92@gmail.com",
       linkedin: "https://www.linkedin.com/in/ivan-ilchenko-b603871b1/",
       facebook: "https://www.facebook.com/profile.php?id=100025083282787",
     },
     {
-      name: "ОЛЕКСІЙ КОЗЛОВ",
+      name: "OŁEKSIJ KOZŁOW",
       photo: AlexKozzlov,
-      position: "Front-End розробник",
-      tasks: `У якості керівного складу я координував роботу своєї команди, поставив завдання, надавав необхідні поради. Мої особисті завдання включали маршрутизацію, роботу з API, вкладки "«Контакти і матеріали»`,
+      position: "Front-End Developer",
+      tasks: `Jako członek zespołu zarządzającego koordynowałem pracę mojego zespołu, wyznaczałem zadania i udzielałem niezbędnych porad. Do moich osobistych zadań należało trasowanie, praca z API, zakładki "Kontakty i materiały"`,
       email: "alexandr.kozlov1120@gmail.com",
       linkedin: "https://www.linkedin.com/in/alexkozzlov/",
       facebook: "https://www.facebook.com/profile.php?id=100022988104383",
     },
     {
-      name: "МИРОНОВИЧ ОЛЕКСАНДР",
+      name: "ALEKSANDR MYRONOWYCZ",
       photo: MyronovychOleksandr,
-      position: "Front-End розробник",
+      position: "Front-End Developer",
       tasks:
-        "Я створив AuthPage, AuthForm і ContactCard. Також, я розробив функціональність для Реєстрація/Вхід.",
+        "Stworzyłem AuthPage, AuthForm i ContactCard. Opracowałem również funkcjonalność Rejestracji/Logowania.",
       email: "myronovycholeksandr2311@gmail.com",
       linkedin: "https://www.linkedin.com/in/oleksandr-myronovych-b51a0b20b/",
       facebook: "https://www.facebook.com/profile.php?id=100023580738335",
     },
     {
-      name: "ОЛЕКСІЙ СИЗОВ",
+      name: "OŁEKSIJ SYZOW",
       photo: AlexSyzov,
-      position: "Front-End розробник",
+      position: "Front-End Developer",
       tasks:
-        "Мені було дано честь створити головну сторінку цього сайту, а також трохи логіки тестування. Але, звичайно, я не досяг свого повного потенціалу, зробивши це.",
+        "Dostąpiłem zaszczytu stworzenia strony głównej tej witryny, a także części logiki testowej. Ale oczywiście nie osiągnąłem swojego pełnego potencjału po zrobieniu tego.",
       email: "sashasyzov@gmail.com",
       linkedin: "https://www.linkedin.com/in/alex-syz%C3%B3v-93b442210/",
       facebook: "https://www.facebook.com/profile.php?id=100021878402201",
     },
     {
-      name: "МАР'ЯН ЛАЩУКІВИЧ",
+      name: "MARIAN ŁASZCZUKIWYCZ",
       photo: Maryan,
-      position: "Front-End розробник",
+      position: "Front-End Developer",
       tasks:
-        "На цьому проекті я зробив наступні розділи: Навігація і футер. У розділі Навігація я також розробив компонент userinfo.",
+        "W tym projekcie wykonałem następujące sekcje: Nawigacja i Footer. W sekcji Nawigacja opracowałem również komponent userinfo.",
       email: "mlashchukievich@gmail.com",
       linkedin: "https://www.linkedin.com/in/maryan-lashchukevych-34b8ba1b4/",
       facebook: "https://www.facebook.com/maryan.lashchukievich/",
     },
     {
-      name: "ВАЛЕРІЙ ТРОЯН",
+      name: "WALERIJ TROJAN",
       photo: Valerockk,
-      position: "Front-End розробник",
+      position: "Front-End Developer",
       tasks:
-        "Я працював над результатами, діаграмою та  компонентами питань цього проекту. Розроблена функціональність для тестування, отримання і відображення результатів тестування.",
+        "Pracowałem nad wynikami, diagramem i komponentami pytań tego projektu. Rozbudowana funkcjonalność do testowania, uzyskiwania i wyświetlania wyników testów.",
       email: "trojan.valerii@gmail.com",
       linkedin:
         "https://www.linkedin.com/in/%D1%82%D1%80%D0%BE%D1%8F%D0%BD-%D0%B2%D0%B0%D0%BB%D0%B5%D1%80%D0%B8%D0%B9-b5b52915a/",
       facebook: "https://www.facebook.com/profile.php?id=100014146264741",
     },
-  ]
+  ],
 };
 
 export { contacts };
