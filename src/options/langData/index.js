@@ -1,5 +1,7 @@
-import qaTheoryUk from "./qaTheoryUk";
-import qaTechUk from "./qaTechUk";
+import qaTheoryUk from "./questions/uk/qaTheoryUk";
+import qaTechUk from "./questions/uk/qaTechUk";
+import qaTheoryPl from "./questions/pl/qaTheoryPl";
+import qaTechPl from "./questions/pl/qaTechPl";
 import contentLang from "./content";
 
-export { qaTechUk, qaTheoryUk, contentLang };
+export { qaTechPl, qaTheoryPl, qaTechUk, qaTheoryUk, contentLang };

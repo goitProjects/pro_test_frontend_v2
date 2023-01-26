@@ -13,7 +13,7 @@ const ContactsCard = ({
 }) => {
   return (
     <div className={s.container}>
-      <img src={photo} className={s.image} alt="profile" />
+      <img src={photo} className={s.image} alt="profile" width="294"/>
       <div className={s.box}>
         <h3 className={s.name}>{name}</h3>
         <p className={s.position}>{position}</p>

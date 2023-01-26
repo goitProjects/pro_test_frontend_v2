@@ -11,7 +11,13 @@ import { getLangValue } from "../../../redux/selectors/langSelectors";
 const ContactsPage = () => {
   useRestTest();
 
-  const lang = useSelector(getLangValue);
+  // розкоментувати після того як буде переклад контактів польською
+  // const lang = useSelector(getLangValue);
+  
+  // видалити після того як буде переклад контактів польською
+  const langState = useSelector(getLangValue);
+  const lang = langState === "uk" || langState === "en" ? langState : "en";
+  // видалити після того як буде переклад контактів польською -END
 
   return (
     <div className={s.wrapper}>
