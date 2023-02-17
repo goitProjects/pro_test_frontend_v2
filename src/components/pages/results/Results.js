@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
-// import routes from "../../../routers/routers";
 import Diagram from "../../diagram/Diagram";
 import catImages from "../../../img/catResultPage.png";
 import { getTestType } from "../../../redux/selectors/testSelector";
@@ -17,6 +16,7 @@ import styles from "./Results.module.scss";
 import Loader from "../../loader/Loader";
 import { contentLang } from "../../../options/langData";
 import { getLangValue } from "../../../redux/selectors/langSelectors";
+import testTypes from "../../../options/testTypes";
 
 const { title, descr, result, resultDescr, btnTitle, totalTestDescr } =
   contentLang.resultPage;
@@ -65,16 +65,13 @@ class Results extends Component {
       totalTestDescr["not_bad!"].text[lang];
 
     return (
-      // testAnswers === null || testAnswers.length < 12 ? (
-      //   <Redirect to={routes.mainPage} />
-      // ) :
       results.answers ? (
         <Loader />
       ) : (
         <div className={styles.results}>
           <h2 className={styles.resultTitle}>{title[lang]}</h2>
           <p className={styles.resultName}>
-            {this.props.typeOfTests === "technical"
+            {this.props.typeOfTests === testTypes.TECH
               ? `[ ${descr.tech[lang]}_ ]`
               : `[ ${descr.theory[lang]}_ ]`}
           </p>

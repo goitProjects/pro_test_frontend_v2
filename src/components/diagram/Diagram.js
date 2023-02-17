@@ -70,9 +70,4 @@ class Diagram extends Component {
   }
 }
 
-// const mapStateToProps = (state) => ({
-//   percent: state.resultsOfTest.results.result,
-// });
-
-// export default connect(mapStateToProps)(Diagram);
 export default Diagram;

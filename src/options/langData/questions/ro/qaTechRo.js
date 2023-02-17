@@ -1,0 +1,346 @@
+const qaTechRo = [
+  {
+    question: "Câte principii de testare există?",
+    questionId: 1,
+    answers: ["5", "6", "7", "8", "9", "Nu știu"],
+    rightAnswer: "7",
+  },
+  {
+    question: "Verificarea -",
+    questionId: 2,
+    answers: [
+      "Răspunde la întrebarea dacă software-ul a fost creat și testat corect și dacă toate cerințele au fost îndeplinite",
+      "În cadrul procesului de verificare, ne asigurăm că toate funcționalitățile create funcționează corect și logic",
+      "Structura de verificare conține componente cum ar fi verificarea cerințelor validate, documentația tehnică și dacă codul este implementat corect în orice etapă de dezvoltare sau testare a software-ului",
+      "Variantele 2 și 3 sunt corecte",
+      "Toate variantele sunt corecte",
+      "Toate variantele sunt greșite",
+    ],
+    rightAnswer: "Toate variantele sunt corecte",
+  },
+  {
+    question: "Validarea –",
+    questionId: 3,
+    answers: [
+      "Răspunde la întrebarea dacă produsul este dezvoltat în conformitate cu așteptările clientului",
+      "În cadrul procesului de validare, ne asigurăm că produsul îndeplinește pe deplin cerințele așteptate și că clientul este la curent cu funcționalitatea",
+      "Validarea implică o evaluare generală a software-ului și se bazează exclusiv pe o opinie subiectivă privind funcționarea corectă a software-ului sau a componentelor sale",
+      "Variantele 1 și 3 sunt corecte",
+      "Toate variantele sunt corecte",
+      "Toate variantele sunt greșite",
+    ],
+    rightAnswer: "Toate variantele sunt corecte",
+  },
+  {
+    question:
+      "Care dintre următoarele este un MINUS al metodologiei Waterfall?",
+    questionId: 4,
+    answers: [
+      "Un grad ridicat de transparență al procesului de dezvoltare și etapelor proiectului",
+      "Stabilitatea cerințelor",
+      "Facilitarea elaborării planului de proiect pentru a reuni echipa în vederea realizării acestuia",
+      "Toate cerințele trebuie să fie cunoscute înainte de începerea ciclului de viață al proiectului",
+      "Succesiune clară",
+      "Toate variantele sunt corecte",
+      "Toate variantele sunt greșite",
+    ],
+    rightAnswer:
+      "Toate cerințele trebuie să fie cunoscute înainte de începerea ciclului de viață al proiectului",
+  },
+  {
+    question:
+      "Această metodologie de dezvoltare a software-ului are ca obiectiv reducerea volumului de lucru actual. În cadrul acestei metodologii: nu există o limită de timp atât pentru sarcini, cât și pentru sprinturi; numărul de sarcini este din ce în ce mai mic; nu este nevoie să se stabilească termene limită pentru sarcini, dar este totuși necesar să se măsoare pentru prezentarea generală. Despre ce metodologie este vorba?",
+    questionId: 5,
+    answers: [
+      "Waterfall",
+      "Scrum",
+      "Agile",
+      "Kanban",
+      "Această definiție se aplică la toate metodologiile",
+      "Toate variantele sunt greșite",
+    ],
+    rightAnswer: "Kanban",
+  },
+  {
+    question: "Ce înseamnă XP în testare?",
+    questionId: 6,
+    answers: [
+      "eXPerience",
+      "eXtreme Programming",
+      "eXperience Points",
+      "XP Injection",
+      "Toate variantele sunt corecte",
+      "Toate variantele sunt greșite",
+    ],
+    rightAnswer: "eXtreme Programming",
+  },
+  {
+    question: "Conceptele de bază ale Agile",
+    questionId: 7,
+    answers: [
+      "Oamenii și interacțiunea sunt mai importante decât procesele și instrumentele",
+      "Un produs care funcționează este mai important decât documentația",
+      "Colaborarea cu clientul este mai importantă decât stabilirea condițiilor contractuale",
+      "Să fii dispus să te schimbi este mai important decât să urmezi planul inițial",
+      "Toate variantele sunt corecte",
+      "Toate variantele sunt greșite",
+    ],
+  },
+  {
+    question:
+      "Ce metodologie se referă la aceste 4 etape: Inițiere, Elaborare, Construcție, Tranziție",
+    questionId: 8,
+    answers: [
+      "RUP",
+      "Kanban",
+      "Scrum",
+      "Agile",
+      "Waterfall",
+      "Toate variantele sunt greșite",
+    ],
+    rightAnswer: "RUP",
+  },
+  {
+    question: "Ordinea corectă a elementelor Scrum",
+    questionId: 9,
+    answers: [
+      "Planificarea Sprintului și crearea backlog-ului Sprintului - Lucrul cu Sprintul. Scrumul zilnic - Testarea și prezentarea produsului - Retrospectivă. Planificarea următorului Sprint",
+      "Crearea backlog-ului Sprintului - Lucrul cu Sprintul.  Scrumul zilnic - Testarea și prezentarea produsului - Retrospectivă. Planificarea următorului Sprint",
+      "Crearea backlog-ului Sprintului - Planificarea Sprintului și crearea backlog-ului Sprintului - Testarea și prezentarea produsului - Retrospectivă. Planificarea următorului Sprint",
+      "Crearea backlog-ului Sprintului - Planificarea Sprintului și crearea backlog-ului Sprintului - Lucrul cu Sprintul. Scrumul zilnic - Retrospectivă. Planificarea următorului Sprint.",
+      "Crearea backlog-ului Sprintului - Planificarea Sprintului și crearea backlog-ului Sprintului - Lucrul cu Sprintul. Scrumul zilnic - Testarea și prezentarea produsului",
+      "Toate variantele sunt greșite",
+    ],
+    rightAnswer: "Toate variantele sunt greșite",
+  },
+  {
+    question: "Ce competențe sunt cel mai necesare pentru un project manager?",
+    questionId: 10,
+    answers: [
+      "Colectarea și sistematizarea cerințelor proiectului",
+      "Elaborarea unui plan de lucru, KPI, hărți mentale",
+      "Căutarea specialiștilor, freelancerilor, crearea portretului angajatului dorit pentru HR",
+      "Definirea sarcinilor și monitorizarea respectării termenelor limită",
+      "Toate variantele sunt corecte",
+      "Toate variantele sunt greșite",
+    ],
+    rightAnswer: "Toate variantele sunt corecte",
+  },
+  {
+    question: "Care sunt responsabilitățile unui Product Owner?",
+    questionId: 11,
+    answers: [
+      "Definirea sarcinilor și monitorizarea respectării termenelor limită",
+      "Gestionarea cheltuielilor bugetare",
+      "Actualizarea documentației proiectului (caiete de sarcini, contracte, acte, facturi, estimări, rapoarte)",
+      "Din nou, BUGETURILE și TERMENELE LIMITĂ sunt cele mai importante aspecte ale muncii sale",
+      "Toate variantele sunt corecte",
+      "Toate variantele sunt greșite",
+    ],
+    rightAnswer: "Toate variantele sunt greșite",
+  },
+  {
+    question: "Un Product Owner monitorizează",
+    questionId: 12,
+    answers: [
+      "Cine folosește produsul și care sunt caracteristicile principale și cele secundare pentru utilizatori",
+      "Cum rezolvă utilizatorii problemele și ce probleme au aceștia",
+      "Cum să atragă mai mulți utilizatori; cum să rețină utilizatorii existenți și cum să-i facă să cumpere",
+      "De ce utilizatorii abandonează produsul (ar putea fi vorba de o interfață incomodă, de erori, de lipsa funcțiilor necesare sau de costul)",
+      "Toate variantele sunt corecte",
+      "Toate variantele sunt greșite",
+    ],
+    rightAnswer: "Toate variantele sunt corecte",
+  },
+  {
+    question: "Ce este testarea dinamică?",
+    questionId: 13,
+    answers: [
+      "Testarea prin executarea exclusivă a codului cu diferite valori de intrare și validare a rezultatelor",
+      "Testarea prin executarea exclusivă a unui program cu diferite valori de intrare și validare a rezultatelor",
+      "Testarea prin executarea codului sau a programului cu diferite valori de intrare și validare a rezultatelor",
+      "Testarea prin executarea codului",
+      "Testarea cu diferite valori de intrare și validare a rezultatelor",
+      "Nu știu",
+    ],
+    rightAnswer:
+      "Testarea prin executarea codului sau a programului cu diferite valori de intrare și validare a rezultatelor",
+  },
+  {
+    question: "Ce este testarea formală?",
+    questionId: 14,
+    answers: [
+      "Verificarea software-ului în conformitate cu planul de testare, procedurile de testare și documentația aferentă, ținând cont de dorințele clientului",
+      "Validarea software-ului în conformitate cu planul de testare, procedurile de testare și documentația aferentă, ținând cont de dorințele clientului",
+      "Verificarea software-ului în conformitate cu procedurile de testare și documentația aferentă, ținând cont de dorințele clientului",
+      "Nu știu",
+    ],
+    rightAnswer:
+      "Verificarea software-ului în conformitate cu planul de testare, procedurile de testare și documentația aferentă, ținând cont de dorințele clientului",
+  },
+  {
+    question:
+      "Utilizarea ușoară a interfeței este de obicei definită printr-o serie de indicatori calitativi",
+    questionId: 15,
+    answers: [
+      "Capacitatea de învățare, performanță, erori, satisfacție",
+      "Învățare, memorare, erori, satisfacție",
+      "Performanță, memorare, erori, satisfacție",
+      "Capacitatea de învățare, performanță, memorare, erori",
+      "Capacitatea de învățare, performanță, memorare, erori, satisfacție",
+      "Nu știu",
+    ],
+    rightAnswer:
+      "Capacitatea de învățare, performanță, memorare, erori, satisfacție",
+  },
+  {
+    question: "Ce este defectul Showstopper?",
+    questionId: 16,
+    answers: [
+      "Un defect care vă obligă să reveniți la ultima versiune",
+      "Un defect care vă obligă să faceți o lansare imediată, fără testare",
+      "Un defect care vă obligă să întrerupeți procesul de testare",
+      "Un defect, adică lipsa unui defect. Dar care trebuie să existe",
+      "Toate variantele sunt corecte",
+      "Toate variantele sunt greșite",
+    ],
+    rightAnswer: "Un defect care vă obligă să întrerupeți procesul de testare",
+  },
+  {
+    question: "STLC –",
+    questionId: 17,
+    answers: [
+      "Etapa în care se stabilește strategia de testare",
+      "Ciclul de viață al testării software",
+      "Etapa finală a testării software",
+      "Abrevierea dată nu are nicio legătură cu testarea",
+      "Toate variantele sunt corecte",
+      "Toate variantele sunt greșite",
+    ],
+    rightAnswer: "Ciclul de viață al testării software",
+  },
+  {
+    question: "Care dintre următoarele variante este de prisos?",
+    questionId: 18,
+    answers: [
+      "Test plan",
+      "Bug report",
+      "Backlog",
+      "Checklist",
+      "Cheat list",
+      "Set de cazuri de testare și instrumente",
+    ],
+    rightAnswer: "Backlog",
+  },
+  {
+    question: "Test plan răspunde la următoarele întrebări",
+    questionId: 19,
+    answers: [
+      "Ce trebuie testat?",
+      "Ce va fi testat?",
+      "Cum și când va fi testat?",
+      "Începutul testării și criteriile de finalizare",
+      "Toate variantele sunt corecte",
+      "Toate variantele sunt greșite",
+    ],
+    rightAnswer: "Toate variantele sunt corecte",
+  },
+  {
+    question: "Ce este de prisos în condițiile începerii testării?",
+    questionId: 20,
+    answers: [
+      "SRS - software",
+      "FRS",
+      "Use case",
+      "Test plan",
+      "Toate variantele sunt corecte",
+      "Toate variantele sunt greșite",
+    ],
+    rightAnswer: "Toate variantele sunt greșite",
+  },
+  {
+    question: "Ce este de prisos în criteriile de testare?",
+    questionId: 21,
+    answers: [
+      "Testing report",
+      "Metrics",
+      "Test Analysis Report",
+      "Test case",
+      "Toate variantele sunt corecte",
+      "Toate variantele sunt greșite",
+    ],
+    rightAnswer: "Test case",
+  },
+  {
+    question:
+      "Aceasta este o testare amănunțită de către utilizatori care au acces simultan la un program pentru a verifica impactul asupra codului, modulului sau bazei de date. Acesta detectează în special blocajele din cod.",
+    questionId: 22,
+    answers: [
+      "Currency testing",
+      "Testing the web application",
+      "Functional testing",
+      "Interface testing",
+      "Gamma testing",
+      "Nu știu",
+    ],
+    rightAnswer: "Currency testing",
+  },
+  {
+    question:
+      "Această testare se face pe un site web pentru a verifica încărcarea, afișarea, securitatea, funcționalitatea, interfața, compatibilitatea și alte probleme de utilizare.",
+    questionId: 23,
+    answers: [
+      "Currency testing",
+      "Testarea aplicațiilor web",
+      "Functional testing",
+      "Interface testing",
+      "Gamma testing",
+      "Nu știu",
+    ],
+    rightAnswer: "Testarea aplicațiilor web",
+  },
+  {
+    question:
+      "Testarea elementelor permite verificarea funcționării individuale a unităților de cod sursă.",
+    questionId: 24,
+    answers: [
+      "Currency testing",
+      "Тестування веб-додатку",
+      "Functional testing",
+      "Interface testing",
+      "Gamma testing",
+      "Nu știu",
+    ],
+    rightAnswer: "Functional testing",
+  },
+  {
+    question:
+      "Testarea interfeței verifică interacțiunea dintre unitățile individuale. Cel mai frecvent utilizată pentru a testa interfața cu utilizatorul a programelor GUI.",
+    questionId: 25,
+    answers: [
+      "Currency testing",
+      "Testing the web application",
+      "Functional testing",
+      "Interface testing",
+      "Gamma testing",
+      "Nu știu",
+    ],
+    rightAnswer: "Interface testing",
+  },
+  {
+    question:
+      "Această testare se face atunci când software-ul este gata de lansare, verificând respectarea cerințelor.",
+    questionId: 26,
+    answers: [
+      "Currency testing",
+      "Testing the web application",
+      "Functional testing",
+      "Interface testing",
+      "Gamma testing",
+      "Nu știu",
+    ],
+    rightAnswer: "Gamma testing",
+  },
+];
+
+export default qaTechRo;

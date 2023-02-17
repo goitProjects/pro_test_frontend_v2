@@ -4,6 +4,7 @@ import { useHistory } from "react-router-dom";
 import { addAnswer } from "../../redux/actions/testAction";
 import { getAnswers, getTests } from "../../redux/selectors/testSelector";
 import styles from "./Questions.module.scss";
+import { useTestQuestions } from "../../hooks/useTestQuestions";
 
 const Questions = ({ questionNum }) => {
   const dispatch = useDispatch();
@@ -12,11 +13,14 @@ const Questions = ({ questionNum }) => {
   const testData = useSelector(getTests);
   const checkedAnswers = useSelector(getAnswers);
 
+  const { question, questionId, answers } = useTestQuestions(
+    testData,
+    questionNum
+  );
+
   const [checkedAnswer, setCheckedAnswer] = useState(null);
 
   const questionIdRef = useRef(null);
-
-  const { question, questionId, answers } = testData[questionNum - 1];
 
   const savedAnswer = checkedAnswers?.find(
     (answer) => answer.questionId === questionId

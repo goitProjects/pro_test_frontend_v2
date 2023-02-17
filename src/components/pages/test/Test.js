@@ -10,7 +10,6 @@ import {
   getHasTest,
 } from "../../../redux/selectors/testSelector";
 import { getTest } from "../../../redux/operations/testOperations";
-import { addTestType } from "../../../redux/actions/testAction";
 import QustionsCardPaginator from "../../qustionsCardPaginator/QustionsCardPaginator";
 import QuestionsCardHeader from "../../questionsCardHeader/QuestionsCardHeader";
 import { contentLang } from "../../../options/langData";
@@ -36,7 +35,7 @@ const Test = ({ match }) => {
   useEffect(() => {
     if (!hasTest) {
       dispatch(getTest(testType));
-      dispatch(addTestType(testType));
+      // dispatch(addTestType(testType));
     }
     // eslint-disable-next-line
   }, []);

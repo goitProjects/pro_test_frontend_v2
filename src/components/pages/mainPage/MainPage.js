@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { useRestTest } from "../../../hooks/useRestTest";
+import { useResetTest } from "../../../hooks/useResetTest";
 import sprite from "../../../sprites/sprite.svg";
 import styles from "./MainPage.module.scss";
 import testTypes from "../../../options/testTypes";
@@ -11,7 +11,7 @@ import { getLangValue } from "../../../redux/selectors/langSelectors";
 const { mainTitle, descr, titleNavigation } = contentLang.mainPage;
 
 const MainPage = () => {
-  useRestTest();
+  useResetTest();
 
   const lang = useSelector(getLangValue);
 

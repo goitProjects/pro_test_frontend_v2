@@ -53,7 +53,7 @@ const App = () => {
                     import("../pages/UsefulInfo/UsefulInfo")
                   )}
                 />
-                <Redirect to="/" />
+                <Redirect to={routers.mainPage} />
               </Switch>
             ) : (
               <Switch>
@@ -69,7 +69,7 @@ const App = () => {
                     import("../pages/contactsPage/ContactsPage ")
                   )}
                 />
-                <Redirect to="/auth" />
+                <Redirect to={routers.authPage} />
               </Switch>
             )}
           </Suspense>

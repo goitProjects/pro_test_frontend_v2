@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
-import { useRestTest } from "../../../hooks/useRestTest";
+import { useResetTest } from "../../../hooks/useResetTest";
 import styles from "./UsefulInfo.module.scss";
 import { contentLang } from "../../../options/langData";
 import { getLangValue } from "../../../redux/selectors/langSelectors";
@@ -14,7 +14,7 @@ const materialsType = {
 const { literature, resources } = contentLang.materialsPage;
 
 const UsefulInfo = () => {
-  useRestTest();
+  useResetTest();
 
   const lang = useSelector(getLangValue);
 

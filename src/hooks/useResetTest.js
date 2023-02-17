@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { resetTest } from "../redux/actions/testAction";
 import { getHasTest } from "../redux/selectors/testSelector";
 
-export const useRestTest = () => {
+export const useResetTest = () => {
   const dispatch = useDispatch();
 
   const hasTest = useSelector(getHasTest);

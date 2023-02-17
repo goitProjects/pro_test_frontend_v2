@@ -8,7 +8,7 @@ import {
   test_Success,
   test_Error,
   resetTest,
-  addTestType,
+  // addTestType,
 } from "../actions/testAction";
 
 import { logOutSuccess } from "../actions/authAction";
@@ -21,7 +21,7 @@ const test = createReducer([], {
 
 const type = createReducer(null, {
   [resetTest]: () => null,
-  [addTestType]: (_, { payload }) => payload,
+  // [addTestType]: (_, { payload }) => payload,
   [logOutSuccess]: () => null,
 });
 

@@ -5,19 +5,19 @@ import ContactsCard from "../../contactsCard/ContactsCard";
 
 import s from "./ContactsPage.module.scss";
 import { contacts } from "./data";
-import { useRestTest } from "../../../hooks/useRestTest";
+import { useResetTest } from "../../../hooks/useResetTest";
 import { getLangValue } from "../../../redux/selectors/langSelectors";
 
 const ContactsPage = () => {
-  useRestTest();
+  useResetTest();
 
-  // розкоментувати після того як буде переклад контактів польською
-  const lang = useSelector(getLangValue);
-  
-  // видалити після того як буде переклад контактів польською
-  // const langState = useSelector(getLangValue);
-  // const lang = langState === "uk" || langState === "en" ? langState : "en";
-  // видалити після того як буде переклад контактів польською -END
+  // розкоментувати після того як буде переклад контактів румунською
+  // const lang = useSelector(getLangValue);
+
+  // видалити після того як буде переклад контактів румунською
+  const langState = useSelector(getLangValue);
+  const lang = langState === "ro" ? "en" : langState;
+  // видалити після того як буде переклад контактів румунською -END
 
   return (
     <div className={s.wrapper}>
