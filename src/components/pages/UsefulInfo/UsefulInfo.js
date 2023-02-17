@@ -44,16 +44,18 @@ const UsefulInfo = () => {
           <p className={styles["sections-name"]}>{resources.title[lang]}</p>
           <hr />
           <ol className={styles["sources-list"]}>
-            <li className={styles["sources-item"]}>
-              <a
-                href="https://dou.ua/"
-                target="_blank"
-                rel="noreferrer"
-                className={styles["sources-item--link"]}
-              >
-                dou.ua
-              </a>
-            </li>
+            {lang !== "ro" && (
+              <li className={styles["sources-item"]}>
+                <a
+                  href="https://dou.ua/"
+                  target="_blank"
+                  rel="noreferrer"
+                  className={styles["sources-item--link"]}
+                >
+                  dou.ua
+                </a>
+              </li>
+            )}
             <li className={styles["sources-item"]}>
               <a
                 href="https://habr.com/"

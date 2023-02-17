@@ -230,7 +230,7 @@ const contentLang = {
         en: ["dou.ua", "Habr", "facebook.com/QA", "goit.ua"],
         uk: ["dou.ua", "Habr", "facebook.com/QA", "goit.ua"],
         pl: ["dou.ua", "Habr", "facebook.com/QA", "goit.ua"],
-        ro: ["dou.ua", "Habr", "facebook.com/goit.romania", "goit.global/ro/"],
+        ro: [null, "Habr", "facebook.com/goit.romania", "goit.global/ro/"],
       },
     },
   },
