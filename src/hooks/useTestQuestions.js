@@ -12,6 +12,8 @@ export const useTestQuestions = (testQuestions, questionNum) => {
   const { testType } = useParams();
   const lang = useLangValue();
 
+  // console.log("langOptions :>> ", langOptions["qaTheoryUk"]);
+
   const testMap = useMemo(() => {
     const tests =
       testType === testTypes.THEORY
@@ -19,6 +21,7 @@ export const useTestQuestions = (testQuestions, questionNum) => {
         : testType === testTypes.TECH
         ? langOptions["qaTech" + toUpperCaseFirstLetter(lang)]
         : [];
+    // console.log("tests :>> ", tests);
     return tests.reduce((acc, el) => {
       acc[el.questionId] = el;
       return acc;
