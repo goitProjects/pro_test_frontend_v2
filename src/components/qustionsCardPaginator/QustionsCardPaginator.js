@@ -1,13 +1,13 @@
 import { useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
-import { getAnswers, getTestType } from "../../redux/selectors/testSelector";
+import { useHistory, useParams } from "react-router-dom";
+import { getAnswers } from "../../redux/selectors/testSelector";
 import testTypes from "../../options/testTypes";
 import styles from "./QustionsCardPaginator.module.scss";
 import sprite from "../../sprites/sprite.svg";
 
 const QustionsCardPaginator = ({ questionNum, lang, btnsPaginatorContent }) => {
   const history = useHistory();
-  const testType = useSelector(getTestType);
+  const { testType } = useParams();
 
   const answersQuantity = useSelector(getAnswers).length;
   const canPushNextBtn =
