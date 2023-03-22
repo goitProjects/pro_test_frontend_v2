@@ -1,4 +1,4 @@
-const qaTheoryUk = [
+const qaTheoryEs = [
     {
         question: '¿De qué es responsable el \'CI\' en las pruebas?',
         questionId: 1,
@@ -391,4 +391,4 @@ const qaTheoryUk = [
         rightAnswer: 'Usability testing'
     }
 ];
-export default qaTheoryUk;
+export default qaTheoryEs;

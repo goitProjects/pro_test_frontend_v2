@@ -1,6 +1,8 @@
-export const options = [
-  { value: "en", label: "EN" },
-  { value: "uk", label: "УКР" },
-  { value: "pl", label: "PL" },
-  { value: "ro", label: "RO" },
-];
+import { langValuesOptions } from "./langValuesOptions";
+
+export const options = Object.values(langValuesOptions).map(
+  ({ name, title }) => ({
+    value: name,
+    label: title,
+  })
+);

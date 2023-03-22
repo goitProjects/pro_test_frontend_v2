@@ -3,16 +3,20 @@ export const langValuesOptions = {
     name: "en",
     title: "EN",
   },
-  RO: {
-    name: "ro",
-    title: "RO",
+  UA: {
+    name: "uk",
+    title: "УКР",
   },
   PL: {
     name: "pl",
     title: "PL",
   },
-  UA: {
-    name: "uk",
-    title: "УКР",
+  RO: {
+    name: "ro",
+    title: "RO",
+  },
+  ES: {
+    name: "es",
+    title: "ES",
   },
 };

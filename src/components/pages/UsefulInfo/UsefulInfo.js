@@ -4,6 +4,9 @@ import { useResetTest } from "../../../hooks/useResetTest";
 import styles from "./UsefulInfo.module.scss";
 import { contentLang } from "../../../options/langData";
 import { getLangValue } from "../../../redux/selectors/langSelectors";
+import { langValuesOptions } from "../../../options/langValuesOptions";
+
+const { ES, RO } = langValuesOptions;
 
 const materialsType = {
   LITERATURE: "literature",
@@ -44,7 +47,7 @@ const UsefulInfo = () => {
           <p className={styles["sections-name"]}>{resources.title[lang]}</p>
           <hr />
           <ol className={styles["sources-list"]}>
-            {lang !== "ro" && (
+            {lang !== RO.name && lang !== ES.name && (
               <li className={styles["sources-item"]}>
                 <a
                   href="https://dou.ua/"

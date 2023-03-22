@@ -1,4 +1,4 @@
-const qaTechUk = [
+const qaTechEs = [
     {
         question: '¿Cuántos principios de pruebas existen?',
         questionId: 1,
@@ -337,4 +337,4 @@ const qaTechUk = [
         rightAnswer: 'Gamma testing'
     }
 ];
-export default qaTechUk;
+export default qaTechEs;
