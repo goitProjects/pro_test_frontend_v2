@@ -71,17 +71,17 @@ const Questions = ({ questionNum }) => {
         </p>
         <section className={styles.answersList}>
           <h2 className={styles.questionTitle}>{question}?</h2>
-          {answers.map((answer, idx) => (
+          {answers.translate.map((translatedAnswers, idx) => (
             <div key={idx} className={styles.formRadio}>
               <input
                 id={idx}
                 type="radio"
-                checked={answer === checkedAnswer}
+                checked={answers.original[idx] === checkedAnswer}
                 name="selectedAnswer"
-                value={answer}
+                value={answers.original[idx]}
                 onChange={handleChange}
               />
-              <label htmlFor={idx}>{answer}</label>
+              <label htmlFor={idx}>{translatedAnswers}</label>
             </div>
           ))}
         </section>
