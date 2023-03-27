@@ -23,7 +23,8 @@
   position: absolute;
   width: 130px;
   height: 1px;
-  top: 95px;
+  // top: 95px;
+  bottom: calc(-38px + 16px);
   right: 75px;
   opacity: 0.15;
   background-color: #000000;
@@ -31,7 +32,9 @@
 }
 
 .authorBox {
-  margin: 40px auto 36px auto;
+  // margin: 40px auto 36px auto;
+  margin: 0 auto;
+  padding: 60px 0;
 }
 
 .authorBox__author,
@@ -129,12 +132,13 @@
 
   .quote::after {
     width: 321.5px;
-    top: 118px;
+    // top: 118px;
+    bottom: calc(-38px + 16px);
     right: 170px;
   }
 
   .authorBox {
-    margin: 24px 0 60px 0;
+    margin: 0 auto;
   }
 
   .authorBox__author,
