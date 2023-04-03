@@ -191,6 +191,69 @@ const contacts = {
       facebook: "https://www.facebook.com/profile.php?id=100014146264741",
     },
   ],
+  es: [
+    {
+      name: "IVAN ILCHENKO",
+      photo: IvanIlch,
+      position: "Desarrollador front-end",
+      tasks:
+        "Fui Scrum Master en este proyecto. Diseñé el encabezado, el logotipo, el modo de navegación y el diseño receptivo",
+      email: "ilchenkoivan92@gmail.com",
+      linkedin: "https://www.linkedin.com/in/ivan-ilchenko-b603871b1/",
+      facebook: "https://www.facebook.com/profile.php?id=100025083282787",
+    },
+    {
+      name: "OLEKSIY KOZLOV",
+      photo: AlexKozzlov,
+      position: "Desarrollador front-end",
+      tasks:
+        "Como equipo directivo, coordiné el trabajo de mi equipo, establecí tareas y brindé la asesoría necesaria. Mis tareas personales incluían enrutamiento, trabajo con API, pestañas 'Contactos y materiales'",
+      email: "alexandr.kozlov1120@gmail.com",
+      linkedin: "https://www.linkedin.com/in/alexkozzlov/",
+      facebook: "https://www.facebook.com/profile.php?id=100022988104383",
+    },
+    {
+      name: "MYRONOVYCH OLEKSANDR",
+      photo: MyronovychOleksandr,
+      position: "Desarrollador front-end",
+      tasks:
+        "Creé AuthPage, AuthForm y ContactCard. Además, desarrollé la funcionalidad para registro/inicio de sesión",
+      email: "myronovycholeksandr2311@gmail.com",
+      linkedin: "https://www.linkedin.com/in/oleksandr-myronovych-b51a0b20b/",
+      facebook: "https://www.facebook.com/profile.php?id=100023580738335",
+    },
+    {
+      name: "OLEKSIY SIZOV",
+      photo: AlexSyzov,
+      position: "Desarrollador front-end",
+      tasks:
+        "Me dieron el honor de crear la página principal de este sitio, así como parte de la lógica de prueba. Pero ciertamente no alcancé todo mi potencial al hacerlo",
+      email: "sashasyzov@gmail.com",
+      linkedin: "https://www.linkedin.com/in/alex-syz%C3%B3v-93b442210/",
+      facebook: "https://www.facebook.com/profile.php?id=100021878402201",
+    },
+    {
+      name: "MARYAN LASCHUKIVYCH",
+      photo: Maryan,
+      position: "Desarrollador front-end",
+      tasks:
+        "En este proyecto, hice las siguientes secciones: Navegación y Pie de página. En la sección Navegación, también desarrollé un componente de información de usuario",
+      email: "mlashchukievich@gmail.com",
+      linkedin: "https://www.linkedin.com/in/maryan-lashchukevych-34b8ba1b4/",
+      facebook: "https://www.facebook.com/maryan.lashchukievich/",
+    },
+    {
+      name: "VALERIY TROYAN",
+      photo: Valerockk,
+      position: "Desarrollador front-end",
+      tasks:
+        "Trabajé en los componentes de resultados, gráficos y preguntas de este proyecto. Desarrollé funcionalidades para probar, recuperar y mostrar los resultados de las pruebas",
+      email: "trojan.valerii@gmail.com",
+      linkedin:
+        "https://www.linkedin.com/in/%D1%82%D1%80%D0%BE%D1%8F%D0%BD-%D0%B2%D0%B0%D0%BB%D0%B5 %D1%80%D0%B8%D0%B9-b5b52915a/",
+      facebook: "https://www.facebook.com/profile.php?id=100014146264741",
+    },
+  ],
 };
 
 export { contacts };

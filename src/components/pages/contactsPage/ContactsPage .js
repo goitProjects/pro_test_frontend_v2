@@ -10,8 +10,8 @@ import { langValuesOptions } from "../../../options/langValuesOptions";
 
 const useValidLang = () => {
   const lang = useSelector(getLangValue);
-  const { ES, EN, RO } = langValuesOptions;
-  return lang === ES.name || RO.name ? EN.name : lang;
+  const { EN, RO } = langValuesOptions;
+  return lang === RO.name ? EN.name : lang;
 };
 
 const ContactsPage = () => {
